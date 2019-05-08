@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ghép 2 mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Ghép 2 mảng</legend>
+        Nhập ký tự vào chuỗi của mảng A: <input type="text" id="inputA">
+        <input type="button" value="Nhập vào" onclick="getA()"><br>
+        <div id="stingA"></div>
+        <br>
+        Nhập ký tự vào chuỗi của mảng B: <input type="text" id="inputB">
+        <input type="button" value="Nhập vào" onclick="getB()"><br>
+        <div id="stingB"></div>
+        <br>
+        <input type="button" value="Ghép chuỗi" onclick="join()"><br>
+        <div id="result"></div>
+    </fieldset>
+</form>
+<script>
+    let arrayA = Array();
+    let arrayB = Array();
+    let arrayC = Array();
+    let i = 0, j = 0;
+    function getA() {
+        arrayA[i] = document.getElementById("inputA").value;
+        i++;
+        document.getElementById("stingA").innerHTML = arrayA;
+        document.getElementById("inputA").value = "";
+    }
+    function getB() {
+        arrayB[j] = document.getElementById("inputB").value;
+        j++;
+        document.getElementById("stingB").innerHTML = arrayB;
+        document.getElementById("inputB").value = "";
+    }
+    function join() {
+        let lengthA = arrayA.length;
+        let lengthB = arrayB.length;
+        for (let k = 0; k <lengthA; k++){
+            arrayC[k] = arrayA[k];
+        }
+        for (let k = lengthA; k <lengthA+lengthB; k++){
+            arrayC[k] = arrayB[k-lengthA];
+        }
+        document.getElementById("result").innerHTML = arrayC;
+        console.log(arrayC);
+    }
+</script>
+</body>
+</html>

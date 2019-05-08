@@ -13,36 +13,36 @@
         <input type="button" value="Tìm số lớn nhất" onclick="xuatra()">
         <div id="output"></div>
     </fieldset>
-    <script>
-        let mang = Array();
-        let i = 0;
-
-        function nhap() {
-            let a = parseInt(document.getElementById("nhapso").value);
-            mang[i] = a;
-            alert("Element: " + a + " has added in index " + i);
-            i++;
-            document.getElementById("nhapso").value = "";
-        }
-
-        function xuatra() {
-            let max = mang[0];
-            let tong = 0;
-            let b = mang.length
-            for (i = 1; i < b; i++) {
-                if (max < mang[i]) {
-                    max = mang[i]
-                }
-            }
-            for (i = 0; i < b; i++) {
-                tong += mang[i]
-            }
-            document.getElementById("output").innerHTML = "Số lớn nhất là " + max + "<br>" + "Trung bình các số là " + tong / b;
-        }
-
-    </script>
 </form>
 </body>
+<script>
+    let mang = Array();
+    let i = 0;
+
+    function nhap() {
+        let a = parseInt(document.getElementById("nhapso").value);
+        mang[i] = a;
+        alert("Element: " + a + " has added in index " + i);
+        i++;
+        document.getElementById("nhapso").value = "";
+    }
+
+    function xuatra() {
+        let max = mang[0];
+        let tong = 0;
+        let b = mang.length
+        for (i = 1; i < b; i++) {
+            if (max < mang[i]) {
+                max = mang[i]
+            }
+        }
+        for (i = 0; i < b; i++) {
+            tong += mang[i]
+        }
+        document.getElementById("output").innerHTML = "Số lớn nhất là " + max + "<br>" + "Trung bình các số là " + tong / b;
+    }
+
+</script>
 <body>
 <form>
     <fieldset>
@@ -52,25 +52,24 @@
         <input type="button" value="Đảo ngược phần tử của mảng" onclick="dao()">
         <div id="output2"></div>
     </fieldset>
-    <script>
-        let mang4 = Array();
-        let j = 0;
 
-        function nhap2() {
-            let a = document.getElementById("nhapso2").value;
-            mang4[j] = parseInt(a);
-            alert("Element: " + a + " has added in index " + j);
-            j++;
-            document.getElementById("nhapso2").value = "";
-        }
-
-        function dao() {
-            let mangmoi;
-            let
-            mangmoi = mang4.reverse();
-            document.getElementById("output2").innerHTML = mang4+ "=>" + mangmoi;
-        }
-    </script>
 </form>
 </body>
+<script>
+    let mang4 = Array();
+    let j = 0;
+
+    function nhap2() {
+        let a = document.getElementById("nhapso2").value;
+        mang4[j] = parseInt(a);
+        alert("Element: " + a + " has added in index " + j);
+        j++;
+        document.getElementById("nhapso2").value = "";
+        document.getElementById("output2").innerHTML = mang4;
+    }
+
+    function dao() {
+        document.getElementById("output2").innerHTML = mang4.reverse();
+    }
+</script>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra ký tự nhập vào có trong mảng hay không</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Kiểm tra ký tự nhập vào có trong mảng hay không</legend>
+        Nhập ký tự vào chuỗi: <input type="text" id="input">
+        <input type="button" value="Nhập vào" onclick="inputnum()"><br>
+        <div id="sting"></div>
+        <br>
+        <input type="text" id="number"><input type="button" value="Xóa" onclick="del()"><br>
+        <div id="result"></div>
+    </fieldset>
+</form>
+<script>
+    let array = Array();
+    let i = 0;
+
+    function inputnum() {
+        array[i] = document.getElementById("input").value;
+        document.getElementById("input").value = "";
+        i++;
+        document.getElementById("sting").innerHTML = array;
+    }
+    function del() {
+
+        let a = document.getElementById('number').value;
+        for (let j =0; j<array.length; j++) {
+            if (array[j] == a) {
+                array.splice(j,1);
+                document.getElementById('result').innerHTML = a+" "+"has been deleted." + array;
+            }
+            else {
+                document.getElementById('result').innerHTML = a+" "+"is not in Array.";
+            }
+        }
+    }
+</script>
+</body>
+</html>

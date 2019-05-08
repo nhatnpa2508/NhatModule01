@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra ký tự trong mảng có phải là số hay không</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Kiểm tra ký tự trong mảng có phải là số hay không</legend>
+        Nhập ký tự vào chuỗi: <input type="text" id="input"><input type="button" value="Nhập vào" onclick="inputnum()"><br>
+        <div id="sting"></div><br>
+        <input type="text" id="number"><input type="button" value="Kiểm tra số" onclick="check()"><br>
+        <div id="result"></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    let array = Array();
+    let i = 0;
+    function inputnum() {
+        array[i] = document.getElementById("input").value;
+        document.getElementById("input").value = "";
+        i++;
+        document.getElementById("sting").innerHTML = array;
+    }
+    function check() {
+        let count = 0;
+        let number = document.getElementById("number").value;
+        for (let j = 0; j< array.length; j++){
+            if (number == array[j]){
+                count++;
+            }
+        }
+        if (count >0) {
+            alert("Element: " + number + " is in the array ");
+        }else {
+            alert("Element: " + number + " is not in the array");
+        }
+    }
+</script>
+</html>

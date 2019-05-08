@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số nguyên âm trong chuỗi</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Đếm số nguyên âm trong chuỗi</legend>
+        Nhập số vào chuỗi: <input type="text" id="input"><input type="button" value="Nhập" onclick="getinput()"><br>
+        <div id="sting"></div>
+        <br>
+        <input type="button" value="Đếm số âm" onclick="count()">
+        <div id="result"></div>
+    </fieldset>
+</form>
+<script>
+    let array = Array();
+    let i = 0;
+
+    function getinput() {
+        array[i] = parseInt(document.getElementById("input").value);
+        alert("Element: " + array[i] + " has added in index " + i);
+        i++;
+        document.getElementById("input").value = "";
+        document.getElementById("sting").innerHTML = array;
+    }
+
+
+    function count() {
+        let long = array.length;
+        let count = 0;
+        for (let j = 0; j < long; j++) {
+            if (array[j] > 0)
+                count++;
+        }
+        document.getElementById("result").innerHTML = count + " number negative";
+    }
+</script>
+</body>
+</html>
