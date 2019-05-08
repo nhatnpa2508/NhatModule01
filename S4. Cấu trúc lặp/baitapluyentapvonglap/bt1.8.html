@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hãy thử đoán xem</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>GAME HÃY THỬ ĐOÁN XEM</legend>
+        Nhập vào số từ 1 đến 5
+        <input type="button" value="Bắt đầu" onclick="play()">
+    </fieldset>
+<script>
+    let b = Math.random()*5+1;
+    function play() {
+        c = parseInt(b)
+        let a = 0, i;
+        for ( i = 0; i <3; i++){
+            a = parseInt(prompt("Nhập vào 1 số từ 1 đến 5"));
+            if (a === c){alert("Bạn đã đoán đúng");break};
+            if (a < c){
+                alert("Số bạn nhập bé hơn");
+            }
+            if (a > c){
+                alert("Số bạn nhập lớn hơn");}
+        } alert("Trò chơi kết thúc");
+    }
+</script>
+</form>
+</body>
+</html>

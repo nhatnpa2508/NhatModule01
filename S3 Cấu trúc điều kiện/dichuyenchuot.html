@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Di chuyển chuột</title>
+</head>
+<body>
+<form>
+    <img id="myImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8xE7_6CZEcxE2fkpQOjpPjugdDKAoBWGebjTala5h7lVZeyjs" />
+    <p>Click button below to move the image to right</p>
+    <input type="button" value="Phải" onclick="moveRight();" />
+    <input type="button" value="Trái" onclick="moveLeft();" />
+    <script>
+        let imgObj = null;
+        function init() {
+            imgObj = document.getElementById('myImage');
+            imgObj.style.position = 'relative';
+            imgObj.style.left = '0px';
+        }
+        function moveRight() {
+            imgObj.style.left = parseInt(imgObj.style.left) + 10 + 'px';
+        }
+        window.onload = init;
+        function moveLeft() {
+            imgObj.style.left = parseInt(imgObj.style.left) - 10 + 'px';
+        }
+    </script>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo điều kiện if-else</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Kiểm tra giá trị</legend>
+        Nhập giá trị:<input type="text" id="a1"><br>
+        <input type="button" value="Kiểm tra" onclick="kt()"><br>
+        <div id="a2"></div>
+        <script>
+            function kt() {
+                var a = parseInt(document.getElementById("a1").value);
+                b = parseInt(a);
+                if (a>0){
+                    document.getElementById("a2").innerHTML = "1";
+                } else {
+                    if (a === 0){
+                        document.getElementById("a2").innerHTML = "0";
+                    } else{
+                        document.getElementById("a2").innerHTML = "-1";
+                    }
+                }
+            }
+        </script>
+    </fieldset>
+</form>
+</body>
+</html>

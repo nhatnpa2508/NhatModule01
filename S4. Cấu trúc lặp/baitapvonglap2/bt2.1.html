@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In dãy Fibonacci</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    Nhập vào số Fibonacci cần in ra <input type="text" id = "so"><br>
+    <input type="button" value="in ra" onclick="th()">
+    <script>
+        function th() {
+            let so = parseInt(document.getElementById("so").value);
+            let a = 0;
+            let b = 1;
+            let i;
+            let sotamthoi = 1;
+            for (i = 0; i < so; i++) {
+                document.write(sotamthoi + "<br>");
+                sotamthoi = a + b;
+                a = b;
+                b = sotamthoi;
+            }
+        }
+        display()
+    </script>
+</form>
+</body>
+</html>

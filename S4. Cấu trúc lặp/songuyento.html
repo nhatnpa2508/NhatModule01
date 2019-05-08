@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tốt làm lại</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    In ra dãy n số nguyên tố: <input type="text" id="so" >
+    <input type="button" value="Kiểm tra" onclick="kt()">
+</form>
+<script>
+    function kt() {
+        let songuyento = 2;
+        let n = parseInt(document.getElementById("so").value);
+        let count = 0;
+        while (count < n){
+            let hamdem = 0;
+
+            let i;
+            for ( i = 1; i < songuyento; i++)
+            {
+                if (songuyento % i ===0)
+                {
+                    hamdem++;
+                }
+            }
+            if ( hamdem<2)
+            {
+                document.write(songuyento + '<br>');
+                count = count + 1; //để cộng thêm 1 đơn vị khi số nguyên tố được ghi thêm 1
+            }
+            songuyento = songuyento + 1;
+
+        }
+    }
+</script>
+</body>
+</html>

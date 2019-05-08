@@ -1,0 +1,42 @@
+.switch label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #a5a39d;
+    border-radius: 40px;
+    box-shadow:
+            inset 0 3px 8px 1px rgba(0,0,0,0.2),
+            0 1px 0 rgba(255,255,255,0.5);
+}
+.switch {
+    width: 80px;
+    height: 30px;
+    position: relative;
+}
+.switch label:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -8px; right: -8px; bottom: -8px; left: -8px;
+    border-radius: inherit;
+    background: #ccc; /* Fallback */
+    background: linear-gradient(#f2f2f2, #ababab);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3),
+    0 1px 1px rgba(0,0,0,0.25);
+.switch label i {
+    display: block;
+    height: 100%;
+    width: 60%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    border-radius: inherit;
+    background: #b2ac9e; /* Fallback */
+    background: linear-gradient(#f7f2f6, #b2ac9e);
+    box-shadow:
+            inset 0 1px 0 white,
+            0 0 8px rgba(0,0,0,0.3),
+            0 5px 5px rgba(0,0,0,0.2);
+}

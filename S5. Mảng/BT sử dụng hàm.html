@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập Sử dụng các hàm có sẵn của mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Nối các phần tử trong mảng</legend>
+        Nhập các phần tử trong mảng: <input type="text" id="nhap"><input type="button" value="Nhập" onclick="nhapvao()"><br>
+        <input type="button" value="Nối mảng" onclick="noi()">
+        <div id="noi"></div>
+    </fieldset>
+    <script>
+        let mang = Array();
+        let i=0;
+        function nhapvao() {
+            nhap1 = document.getElementById("nhap").value;
+            mang[i] = nhap1;
+            alert("Element: " + nhap1 + "has added in " + i);
+            i++;
+            document.getElementById("nhap").value = "";
+        }
+        function noi() {
+            document.getElementById("noi").innerHTML = mang.toString() + "<br>"
+                + mang.join() +"<br>"
+                + mang.join("+") + "<br>"
+                + mang.join("--");
+
+        }
+    </script>
+</form>
+</body>
+<body>
+<form>
+    <fieldset>
+        <legend>Nhập 1 dãy số và chèn dấu "-" vào giữa 2 số chẵn</legend>
+        Nhập 1 dãy số bất kỳ <input type="text" id="dayso"><br>
+        <input type="button" value="Chèn dấu '-'" onclick="chen()">
+        <div id="chendau"></div>
+    </fieldset>
+    <script>
+        function chen() {
+            let dayso = window.document.getElementById("dayso").value;
+            let mangso = dayso.toString();
+            let mangchen = [mangso[0]];
+            for (let i = 1; i < mangso.length; i++){
+                if ((mangso[i-1]%2 ===0) && (mangso[i]%2===0))
+                {
+                    mangchen.push('-',mangso[i]);
+                } else {
+                    mangchen.push(mangso[i]);
+                }
+            }
+            document.getElementById("chendau").innerHTML = mangchen.join('');
+        }
+    </script>
+</form>
+</body>
+<body>
+<form>
+    <fieldset>
+        <legend>Nhập 1 chuỗi và biến in thường thành in hoa, chữ cái đầu tiên thành in thường</legend>
+        Nhập 1 chuỗi ký tự bất kỳ: <input type="text" id="chuoikytu"><br>
+        <input type="button" value="Chuyển" onclick="chuyen()">
+        <div id="chuyendoi"></div>
+    </fieldset>
+    <script>
+        function chuyen() {
+            let chuoi = document.getElementById("chuoikytu").value;
+            let chuoimoi = Array();
+            const CHUHOA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const chuthuong = "abcdefghijklmnopqrstuvwxyz";
+            let a = CHUHOA.length;
+            let b = chuoi.length;
+            let i, j;
+            for (i=0; i <b; i++){
+                if (CHUHOA.includes(chuoi[i])) {
+                    chuoimoi.push(chuoi[i].toLowerCase())
+                }
+                else if (chuthuong.includes(chuoi[i])){
+                    chuoimoi.push(chuoi[i].toUpperCase())
+                } else {
+                    chuoimoi.push(chuoi[i])
+                }
+                }
+            document.getElementById("chuyendoi").innerHTML = chuoimoi.join('')
+        }
+    </script>
+</form>
+</body>
+</html>

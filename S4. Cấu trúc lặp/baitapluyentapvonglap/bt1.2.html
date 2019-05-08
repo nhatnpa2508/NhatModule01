@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lấy thông tin nhiệt độ phòng</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    <fieldset>
+        <legend><h2><b>BÀI TẬP KIỂM TRA NHIỆT ĐỘ PHÒNG</b></h2></legend>
+        Nhập nhiệt độ phòng <input type="text" id="so"><br>
+        <input type="button" value="Kiểm tra" onclick="kt()">
+        <div id="kt"></div>
+    </fieldset>
+    <script>
+function kt() {
+    let a = parseInt(document.getElementById("so").value);
+    if (a<20){
+        document.getElementById("kt").innerHTML = "Tăng nhiệt độ phòng";
+    }else {
+        if (a > 100) {
+            document.getElementById("kt").innerHTML = "Giảm nhiệt độ phòng";
+        } else {document.getElementById("kt").innerHTML ="Nhiệt độ bình thường";}
+    }
+}
+</script>
+</form>
+</body>
+</html>

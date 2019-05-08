@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While lồng while</title>
+</head>
+<body>
+<script>
+    var d , b ,c;
+    d = "<table border='1' width='500' cellspacing ='1' cellpading='5' style='text-align: center'>";
+    b = c = 1;
+    while (b<=10){
+        d = d + "<tr>";
+        while (c<=10){
+            d = d + "<td>" + b*c + "</td>";
+            c++;
+        }
+        d = d + "</tr>";
+        b++;<!-- cộng b thêm 1 đơn vị phải để ở phía sau vòng lặp của c để khi thực hiện vòng lặp rồi mới cộng b -->
+        c = 1;<!-- gán c = 1 lại????? qua phép thử thay số c thì c = 1 để hàng thứ 2 đơn vị đầu tiên là 1*b = 2 -->
+         <!--nếu c = 3 thì đơn vị đầu tiên ở hàng thứ 2 là 3*b = 6-->
+    }
+    d = d + "</table>";
+    document.write(d)
+</script>
+</body>
+</html>
+<!-- -->

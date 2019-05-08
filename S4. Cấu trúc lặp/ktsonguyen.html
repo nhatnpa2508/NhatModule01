@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị số nguyên tố</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    <fieldset>
+        <legend><h2><b>BÀI TẬP IN MỘT SỐ NGUYÊN TỐ</b></h2></legend>
+        Nhập một số <input type="text" id="so"><br>
+        <input type="button" value="In ra" onclick="xuat()">
+        <div id="xuat2"></div>
+    </fieldset>
+</form>
+<script>
+    function xuat() {
+        let sonhap = parseInt(document.getElementById("so").value);
+            if (kt(sonhap)) {
+                document.getElementById("xuat2").innerHTML = sonhap + "  là số nguyên tố";
+            } else {
+                document.getElementById("xuat2").innerHTML = sonhap + " không phải là số nguyên tố"
+            }
+        }
+    function kt(sonhap) {
+        if (sonhap <=1) return false;
+        for ( i = 2; i < sonhap - 1; i++){
+            if (sonhap%i == 0){
+                return false;
+            }
+        }return true
+    }
+
+</script>
+</body>
+</html>

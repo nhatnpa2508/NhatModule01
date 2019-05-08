@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In tam giác vuông</title>
+</head>
+<body>
+<form >
+    Nhập chiều dài 1 cạnh của tam giác cần in: <input type="text" id="cd"><br>
+    <input type="button" value="In tam giác vuông 1" onclick="th()">
+    <input type="button" value="In tam giác vuông 2" onclick="th2()">
+    <input type="button" value="In tam giác vuông 3" onclick="th3()">
+    <input type="button" value="In tam giác vuông 4" onclick="th4()">
+</form>
+    <script>
+        function th() {
+            let cd = parseInt(document.getElementById("cd").value);
+            let j;
+            let a = "";
+            for (j = cd; j > 0; j--) {
+                    a = a + "*";
+                    document.write(a + "<br>");
+                    cd--;
+            }
+        }
+        function th2() {
+            let cd = parseInt(document.getElementById("cd").value);
+            let j,i;
+            let e= "";
+            let a = "";
+            for (i = cd; i >= 0; i--) {
+                a = a + "<br>";
+                for (j = 0; j < cd; j++) {
+                    a = a + "*";
+                }
+                cd --;
+            } document.write(a + "<br>");
+        }
+    </script>
+</body>
+<body>
+<script>
+    function th3() {
+        let cd = parseInt(document.getElementById("cd").value);
+        let j;
+        let a = "";
+        for (j = cd; j > 0; j--) {
+            a = a + "*";
+            document.write( "<form style=\"text-align: right\">"+a + "<br></form>");
+            cd--;
+        }
+    }
+    function th4() {
+        let cd = parseInt(document.getElementById("cd").value);
+        let j,i;
+        let a = "";
+        for (i = cd; i >= 0; i--) {
+            a = a + "<br>";
+            for (j = 0; j < cd; j++) {
+                a = a + "*";
+            }
+            cd --;
+        } document.write("<form style=\"text-align: right\">"+ a + "<br></form>");
+    }
+</script>
+</body>
+</html>

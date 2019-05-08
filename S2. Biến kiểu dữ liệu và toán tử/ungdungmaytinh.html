@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phép tính 2 giá trị</title>
+</head>
+<style>
+    #tinhtoan {
+        color: burlywood;
+        padding: 20px;
+        background: dimgray;
+    }
+</style>
+<body>
+<h2>Caculator</h2>
+<input type="text" id="so1">
+<input type="text" id="so2">
+<br>
+<input type="button" value="Phép cộng (+)" onclick="cong()">
+<input type="button" value="Phép trừ (-)" onclick="tru()">
+<input type="button" value="Phép nhân (*)" onclick="nhan()">
+<input type="button" value="Phép chia (/)" onclick="chia()">
+<br>
+Kết quả <div id="tinhtoan"></div>
+<script>
+
+    function cong() {
+        var i = document.getElementById("so1").value;
+        var j = document.getElementById("so2").value;
+        k = parseInt(i) + parseInt(j);
+        document.getElementById("tinhtoan").innerHTML = k;
+    }
+    function tru() {
+        var i = document.getElementById("so1").value;
+        var j = document.getElementById("so2").value;
+        n = parseInt(i) - parseInt(j);
+        document.getElementById("tinhtoan").innerHTML = n;
+    }
+    function nhan() {
+        var i = document.getElementById("so1").value;
+        var j = document.getElementById("so2").value;
+        o = parseInt(i) * parseInt(j);
+        document.getElementById("tinhtoan").innerHTML = o;
+    }
+    function chia() {
+        var i = document.getElementById("so1").value;
+        var j = document.getElementById("so2").value;
+        p = parseInt(i) / parseInt(j);
+        document.getElementById("tinhtoan").innerHTML = p;
+    }
+
+</script>
+
+</body>
+</html>

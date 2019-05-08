@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị lớn nhất trong mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Tìm giá trị lớn nhất trong bảng</legend>
+        Nhập giá trị của mảng vào<input type="text" id="nhap"><input type="button" value="Nhập" onclick="addin()"><br>
+        <input type="button" value="Tìm giá trị lớn nhất" onclick="tim()"><br>
+        <div id="max"></div>
+
+    </fieldset>
+    <script>
+        let so = Array();
+        let i = 0;
+        function addin() {
+            so[i] =  parseInt(document.getElementById("nhap").value);
+            alert("Element: " + so[i] + " add at index " + i);
+            i++;
+            document.getElementById("nhap").value = "";
+        }
+        function tim() {
+            let j;
+            let somax = so[0];
+            let index = 0;
+            for (j = 1; j <so.length;j++){
+                if (so[j]> somax){
+                    somax = so[j];
+                    index = j;
+                }
+            }
+            document.getElementById("max").innerHTML = "Value max = " + somax + " had find at index " + index;
+        }
+    </script>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giai thừa một số nguyên dương</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    Nhập vào 1 số dương <input type="text" id = "so"><br>
+    <input type="button" value="in ra" onclick="tinh()">
+    <div id="tinh"></div>
+    <script>
+        function tinh() {
+            let so = parseInt(document.getElementById("so").value);
+            if (so > 0){
+                let i;
+                let a=1;
+                let b;
+                for (i = so; i >0;i--){
+                    a = a*i;
+                } document.getElementById("tinh").innerHTML = a;
+            }
+        }
+        display()
+    </script>
+</form>
+</body>
+</html>

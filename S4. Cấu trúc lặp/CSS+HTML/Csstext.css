@@ -1,0 +1,22 @@
+div{
+    padding: 20px;
+    width: 500px;
+    height: 500px;
+    text-align: justify;
+    font-family: Helvetica;
+
+}
+p {
+    text-indent: 50px;
+
+}
+a.aaa{
+    color: #50f2ef;
+}
+a{
+    color: blue;
+
+}
+a.bbb{
+    font-size: 70%;
+}

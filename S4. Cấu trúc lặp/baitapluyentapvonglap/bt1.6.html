@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng 30 số đầu tiên chia hết cho 7 trong các số tự nhiên</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Tổng N số đầu tiên chia hết cho 7 trong các số tự nhiên</legend>
+        Nhập N: <input type="text" id="so"><br>
+        <input type="button" value="Tính tổng N số chia hết cho 7" onclick="tinh()">
+        <div id="kq"></div>
+    </fieldset>
+    <script>
+        function tinh() {
+            let sonhap = parseInt(document.getElementById("so").value);
+            let i;
+            let a = 0;
+            for (i = 1; i <= sonhap; i++) {
+                a = a + 7*i;}
+                document.getElementById("kq").innerHTML = a;
+        }
+    </script>
+</form>
+</body>
+</html>

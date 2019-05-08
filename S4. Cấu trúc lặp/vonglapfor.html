@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành vòng lặp for</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Thực hành vòng lặp for</legend>
+        Nhập một số bất kỳ <input type="text" id="so"><br>
+        <input type="button" value="In" onclick="xuat()">
+        <div id="xuat"></div>
+    </fieldset>
+</form>
+<script>
+    function xuat() {
+        var a = parseInt(document.getElementById("so").value);
+        var i = 0;
+        var xuat = "";
+        for (i = 0; i < (a+1);i++){
+            xuat += "Số xuất ra " + i +"<br>";
+            document.getElementById("xuat").innerHTML = xuat;
+        }
+    }
+</script>
+<form>
+    <fieldset>
+        <legend>Thực hành vòng lặp for bài 2/ gán biến bằng Sting</legend>
+        Nhập một số bất kỳ <input type="text" id="so2"><br>
+        <input type="button" value="In" onclick="xuat2()">
+        <div id="xuat2"></div>
+    </fieldset>
+    <script>
+        function xuat2() {
+            var a = parseInt(document.getElementById("so2").value);
+            var i = 0;
+            var xuat2 = "";
+            for (i = 0; i <= a;i+=1){
+                xuat2 = xuat2 + i;}
+                document.getElementById("xuat2").innerHTML = xuat2;
+        }
+    </script>
+    <h2>Bai 2/ gán biến bằng số</h2>
+    Nhập vào một số:<input type="text" id="number">
+    <input type="button" onclick="xuat3()" value="OK">
+    <p id="aa"></p>
+    <script>
+        function xuat3(){
+            var a = parseInt(document.getElementById('number').value);
+            var tong = 0;
+            var i =0;
+            for (i=0; i<=a; i+=1){
+                tong = tong + i;}
+            document.getElementById('aa').innerHTML = tong;
+        }
+    </script>
+</form>
+</body>
+</html>

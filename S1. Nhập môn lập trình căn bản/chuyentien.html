@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+<h2>Chuyển đổi tiền tệ</h2>
+<body>
+<table>
+    <tr>
+        <td>Tiền</td>
+        <td>  Loại tiền đổi </td>
+        <td> Loại tiền muốn đổi</td>
+    </tr>
+    <tr>
+        <td><input type="text" id="so">&nbsp;</td>
+        <td><select type="text" id="t1">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+    </select></td>
+        <td><select type="text" id="t2">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    </select></td>
+
+</table>
+    <input type="button" value="Chuyển tiền" onclick="ct()">
+    <div id="chuyen"></div>
+<script>
+    function ct() {
+        let a = document.getElementById("so").value;
+        let b = document.getElementById("t1").value;
+        let c = document.getElementById("t2").value;
+        g = parseInt(a);
+        if (b == "VND") {
+            if (c == "VND") {
+                document.getElementById("chuyen").innerHTML = g;
+            } else {
+                if (c == "USD") {
+                    document.getElementById("chuyen").innerHTML = g / 20000;
+                } else document.getElementById("chuyen").innerHTML = g / 30000;
+            }
+        }
+
+        if (b == "USD") {
+            if (c == "VND") {
+                document.getElementById("chuyen").innerHTML = g * 20000;
+            } else {
+                if (c == "USD") {
+                    document.getElementById("chuyen").innerHTML = g;
+                } else {
+                    document.getElementById("chuyen").innerHTML = g * 2 / 3;
+                }
+                if (b == "EUR") {
+                    if (c == "VND") {
+                        document.getElementById("chuyen").innerHTML = g * 30000;
+                    } else {
+                        if (c == "USD") {
+                            document.getElementById("chuyen").innerHTML = g * 3 / 2;
+                        } else document.getElementById("chuyen").innerHTML = g ;
+
+
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>

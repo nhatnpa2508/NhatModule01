@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi ngân hàng, số tháng cho vay và lãi xuất hàng tháng</title>
+</head>
+<body>
+<form>
+    <fieldset style="line-height: 30px">
+        <fieldset>
+            <legend><h2><b>TÍNH LÃI NGÂN HÀNG</b></h2></legend>
+            Nhập số tiền vay(tr. đồng): <input type="text" id="tienvay"><br>
+            Nhập số tháng vay: <input type="text" id="thangvay"><br>
+            Nhập số tiền vượt kỳ hạn: <input type="text" id="thangvuot"><br>
+            Lãi xuất (%/ tháng): <input type="text" value="1,25%"><br>
+            <input type="button" value="Tính tiền lãi" onclick="tinh()"><br>
+            <div id="tinh"></div>
+        </fieldset>
+    </fieldset>
+</form>
+<script>
+    function tinh() {
+        let tienvay = parseFloat(document.getElementById("tienvay").value);
+        let thangvay = parseFloat(document.getElementById("thangvay").value);
+        let thangvuot = parseFloat(document.getElementById("thangvuot").value);
+        let laixuat = 1.25/100;
+        let laime;
+        laime = tienvay*thangvay*laixuat;
+        let laicon = 0;
+        let i;
+        for (i = 1; i <= thangvuot; i++){
+            laime = laime +laime*laixuat + tienvay*laixuat;
+        } document.getElementById("tinh").innerHTML = laime.toFixed(2) + "triệu đồng";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng 20 số Fibo đầu tiên</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+   <fieldset>
+    <h2>Tổng 20 số fibo đầu tiên</h2>
+       Nhập số cần tổng của dãy số fibo <input type="text" id="so">
+    <input type="button" value="In ra Tổng" onclick="th()">
+       <div id="tong"></div>
+   </fieldset>
+    <script>
+        function th() {
+            let inra = parseInt(document.getElementById("so").value);
+            let a = 0, b = 1, sotamthoi = 1;
+            let i;
+            let c = 1;
+            for (i = 1; i < inra; i++) {
+                sotamthoi = a + b;
+                a = b;
+                b = sotamthoi;
+                c = sotamthoi + c;
+            }document.getElementById("tong").innerText = c;
+        }
+    </script>
+</form>
+</body>
+</html>

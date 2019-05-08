@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành Switch - case bt4</title>
+</head>
+<body>
+Nhập vào 1 số: <input type="text" id="so">
+<input type="button" value="Kiểm tra" onclick="kt()">
+<div id="kiemtra"></div>
+    <script>
+        function kt() {
+            let b = parseFloat(document.getElementById("so").value);
+            switch (true) {
+                case (b<0):
+                    document.getElementById("kiemtra").innerHTML = "Số bé hơn 0";
+                    break;
+                case (b>0):
+                    document.getElementById("kiemtra").innerHTML = "Số lớn hơn 0";
+                    break;
+                default:
+                    document.getElementById("kiemtra").innerHTML = "Số bằng 0";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

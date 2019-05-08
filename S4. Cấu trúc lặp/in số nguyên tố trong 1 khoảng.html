@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tốt làm lại</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    In ra dãy số nguyên tố đến: <input type="text" id="so" >
+    <input type="button" value="Kiểm tra" onclick="kt()">
+</form>
+<script>
+    function kt() {
+     let songuyento = 2;
+     let socuoicung = parseInt(document.getElementById("so").value);
+     while (songuyento < socuoicung){
+        let hamdem = 0;
+        let i;
+        for ( i = 1; i < songuyento; i++)
+        {
+            if (songuyento % i ===0)
+            {
+             hamdem++;
+            }
+        }
+        if ( hamdem<2)
+        {
+            document.write("Số " +songuyento + '<br>');
+        }
+        songuyento = songuyento + 1;
+     } // của hàm while
+    } //của function
+</script>
+</body>
+</html>

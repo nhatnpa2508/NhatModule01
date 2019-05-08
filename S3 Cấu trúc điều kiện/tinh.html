@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h2>Caculator</h2>
+<input type="text" id="so1">
+<input type="text" id="so2">
+<br>
+<input type="button" value="Phép cộng (+)" onclick="cong()">
+
+<br>
+<div id="tinh toan"></div>
+<script>
+    var i = document.getElementById("so1").value;
+    var j = document.getElementById("so2").value;
+    function cong() {
+        k = parseInt(i) + parseInt(j);
+        document.getElementById("tinh toan").innerHTML = k;
+    }
+    </script>
+
+</body>
+</html>

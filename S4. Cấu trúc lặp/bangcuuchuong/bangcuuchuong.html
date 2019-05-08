@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập tạo bảng cửu chương từ vòng lặp lồng nhau</title>
+</head>
+<body style="text-align: center">
+<form>
+    <fieldset style="width: 805px">
+        <legend style="text-align: center;" ><h1> <b>BẢNG CỬU CHƯƠNG </b></h1></legend>
+        <SCRIPT>
+            var a;
+            a = "<table border='2' width='800' cellspacing='2' cellpadding='5' text-align='left'>";
+            var b,c;
+            b = c = 0;
+            for (b = 2; b <10; b++){
+                a = a + "<tr>";
+                for (c = 1; c <10; c++) {
+                    a= a + "<td>" +b + " x " + c + " = " + b*c + "</td>";
+                } a = a + "</tr>";
+            } a = a + "</table>";
+            document.write(a)
+        </SCRIPT>
+    </fieldset>
+</form>
+
+</body>
+</html>

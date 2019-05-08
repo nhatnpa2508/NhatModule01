@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In hình chữ nhật</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>In hình chữ nhật với chiều dài và chiều rộng được nhập từ bàn phím</legend>
+    Nhập chiều dài hình chữ nhật: <input type="text" id="cd"><br>
+    Nhập chiều rộng hình chữ nhật: <input type="text" id="cr"><br>
+    <input type="button" value="In hình" onclick="th()">
+    </fieldset>
+    <script>
+        function th() {
+            let cd = parseInt(document.getElementById("cd").value);
+            let cr = parseInt(document.getElementById("cr").value);
+            let a=b=c=d=f=g=e=h="";
+            let i,j,k;
+            for (i = 0; i < cd; i++){
+                a = a +"<td>" + " * " + "</td>";
+            }
+                for (k = 1; k <= cd; k++){
+                    if (k === 1) {
+                        c = c + "<td>" + " * " + "</td>";
+                    } else if (k<cd) {c = c + "<td>" + "&nbsp&nbsp;" + "</td>"
+                    }else  if ( k === cd){c = c + "<td>" + " * " + "</td>";}
+                }d ="<tr>" + c + "</tr>";
+            b = "<table cellpadding='4'><tr>" + a + "</tr>";
+            e = "<tr>" + a + "</tr></table>";
+            for (j = 0; j< cr-2; j++){
+                f = f + d;
+            }
+            document.write(b+f+e);
+        }
+    </script>
+</form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lt1 - 3&4</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Hiển thị số lớn nhất và in ra giá trị trung bình</legend>
+        Nhập giá trị của mảng: <input type="text" id="nhapso">
+        <input type="button" value="Thêm" onclick="nhap()"><br>
+        <input type="button" value="Tìm số lớn nhất" onclick="xuatra()">
+        <div id="output"></div>
+    </fieldset>
+    <script>
+        let mang = Array();
+        let i = 0;
+
+        function nhap() {
+            let a = parseInt(document.getElementById("nhapso").value);
+            mang[i] = a;
+            alert("Element: " + a + " has added in index " + i);
+            i++;
+            document.getElementById("nhapso").value = "";
+        }
+
+        function xuatra() {
+            let max = mang[0];
+            let tong = 0;
+            let b = mang.length
+            for (i = 1; i < b; i++) {
+                if (max < mang[i]) {
+                    max = mang[i]
+                }
+            }
+            for (i = 0; i < b; i++) {
+                tong += mang[i]
+            }
+            document.getElementById("output").innerHTML = "Số lớn nhất là " + max + "<br>" + "Trung bình các số là " + tong / b;
+        }
+
+    </script>
+</form>
+</body>
+<body>
+<form>
+    <fieldset>
+        <legend>Nhập vào mảng số và đảo ngược các phần tử</legend>
+        Nhập giá trị của mảng: <input type="text" id="nhapso2">
+        <input type="button" value="Thêm" onclick="nhap2()"><br>
+        <input type="button" value="Đảo ngược phần tử của mảng" onclick="dao()">
+        <div id="output2"></div>
+    </fieldset>
+    <script>
+        let mang4 = Array();
+        let j = 0;
+
+        function nhap2() {
+            let a = document.getElementById("nhapso2").value;
+            mang4[j] = parseInt(a);
+            alert("Element: " + a + " has added in index " + j);
+            j++;
+            document.getElementById("nhapso2").value = "";
+        }
+
+        function dao() {
+            let mangmoi;
+            let
+            mangmoi = mang4.reverse();
+            document.getElementById("output2").innerHTML = mang4+ "=>" + mangmoi;
+        }
+    </script>
+</form>
+</body>
+</html>

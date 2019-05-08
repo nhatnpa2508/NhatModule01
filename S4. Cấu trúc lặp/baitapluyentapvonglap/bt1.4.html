@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị số Fibonacci đầu tiên chia hết cho 5</title>
+</head>
+<body>
+<form style=" line-height: 30px">
+    Số fibonalci chia hết cho 5 là
+    <input type="button" value="in ra" onclick="th()">
+    <script>
+        function th() {
+            let a = 0, b = 1, sofibo = 1;
+            let i;
+            for (i = 1; i < 100; i++) {
+                if (sofibo % 10 === 0) {
+                    document.write(sofibo);break;
+                } else {
+                    sofibo = a + b;
+                    a = b;
+                    b = sofibo;
+                }
+            }
+        }
+        </script>
+        </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bt Chỉ số cân nặng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+    <legend>Chỉ số cơ thể</legend>
+        Nhập cân nặng: <input type="text" id="w"> (kg)<br>
+        Nhập chiều cao: <input type="text" id="h">(cm)<br>
+        <input type="button" value="Kiểm tra chỉ số BMI" onclick="kt()">
+        <div id="kiemtra"></div>
+    </fieldset>
+    <script>
+        function kt() {
+            var a = parseFloat(document.getElementById("w").value);
+            var b = parseFloat(document.getElementById("h").value);
+            c = (a*10000)/(b*b);
+            if (c >30){
+                document.getElementById("kiemtra").innerHTML = "Béo phì";
+            } else {
+                if (c > 25){
+                    document.getElementById("kiemtra").innerHTML = "Thừa cân";
+                } else {
+                    if (c > 18){
+                        document.getElementById("kiemtra").innerHTML = "Bình thường";
+                    } else {
+                        document.getElementById("kiemtra").innerHTML = "Thiếu cân";
+                    }
+                }
+            }
+        }
+    </script>
+</form>
+</body>
+</html>

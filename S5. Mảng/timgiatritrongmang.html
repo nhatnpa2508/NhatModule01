@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị trong mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Tìm giá trị trong mảng</legend>
+        Nhập giá trị của mảng: <input type="text" id="input">
+        <input type="button" value="Add" onclick="nhapvao()"><br>
+        Nhập giá trị trong mảng cần tìm: <input type="text" id="output">
+        <input type="button" value="Display" onclick="xuatra()">
+        <div id="screen"></div>
+    </fieldset>
+
+    <script>
+        let x = Array();
+        let i = 0;
+
+        function nhapvao(){
+            x[i] = document.getElementById("input").value;
+            alert("Element: " + x[i] + " Added at index " + i);
+            i++;
+            document.getElementById("input").value = "";
+        }
+        function xuatra() {
+            let giatri = parseInt(document.getElementById("output").value);
+            for (let j = 0; j < x.length; j++){
+                if (giatri == x[j]){
+                   document.getElementById("screen").innerHTML = ("Value " + x[j] + "found at " + j);
+                }
+            }
+        }
+</script>
+</form>
+</body>
+</html>

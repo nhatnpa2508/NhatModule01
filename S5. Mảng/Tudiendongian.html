@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng từ điển đơn giản</title>
+</head>
+<body>
+<form style="line-height: 30px">
+    <fieldset>
+        Các từ sẵn có [one,two,three,four,five,six,seven,eight,nine,ten]
+        <legend>Ứng dụng từ điển</legend>
+        Nhập từ tiếng Anh cần tra cứu (không ghi hoa)<input type="text" id="eng"><br>
+        <input type="button" value="dich" onclick="dich()">
+        <div id="dich"></div>
+    </fieldset>
+</form>
+<script>
+    function dich() {
+        let tracuu = document.getElementById("eng").value;
+        let tienganh = ["one","two","three","four","five","six","seven","eight",'nine',"ten"];
+        let tiengviet =["một","hai","ba","bốn","năm","sáu","bảy","tám","chín","mười"];
+        let j;
+
+        for (j = 0; j < tienganh.length; j++) {
+            if (tracuu == tienganh[j]) {
+                document.getElementById("dich").innerHTML = tiengviet[j];break;
+            } else {
+                document.getElementById("dich").innerHTML = "Không có trong từ điền";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

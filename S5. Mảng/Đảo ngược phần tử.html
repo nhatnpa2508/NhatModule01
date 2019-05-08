@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đảo ngược các phần tử trong mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Thực hành đảo ngược phần tử trong mảng</legend>
+        <input type="button" value="đảo ngược" onclick="change()">
+        <div id="daonguoc"></div>
+    </fieldset>
+</form>
+<script>
+    function change() {
+        let x =[-3,5,1,3,2,10];
+        let first = 0;
+        let last = x.length - 1;
+        while (first<last){
+            let b = x[first];
+            x[first] = x[last];
+            x[last] = b;
+            first++;
+            last--;
+        }
+        document.getElementById("daonguoc").innerHTML = x
+    }
+</script>
+</body>
+</html>

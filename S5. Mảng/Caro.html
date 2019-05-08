@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bàn cờ caro</title>
+</head>
+<body style="line-height:  30px; text-align: center">
+<h2>GAME CỜ CARO</h2>
+
+<p id="caro"/>
+</body>
+<script>
+    let a = document.getElementById("caro");
+    let bang = [];
+    let dulieu = "";
+    let i, j;
+    for (i = 0; i < 15; i++) {
+        bang[i] = [".", ".", ".", ".", ".",".", ".", ".", ".", ".",".", ".", ".", ".", "."];
+    }
+    for (i = 0; i < 15; i++) {
+        dulieu += "<br>";
+        for (j = 0; j < 15; j++) {
+            dulieu += bang[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
+    }
+    dulieu += "<br/><br/><input type='button' value='Người 1 Đánh' onclick='danh1()'><input type='button' value='Người 2 Đánh' onclick='danh2()'>";
+    a.innerHTML = dulieu;
+
+    function danh1() {
+        let ngang = prompt("Ngang: ");
+        let doc = prompt("Dọc: ");
+        dulieu = "";
+        bang[doc][ngang] = "x";
+        for (let i = 0; i < 15; i++) {
+            dulieu += "<br/>";
+            for (let j = 0; j < 15; j++) {
+                dulieu += bang[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        dulieu += "<br/><br/><input type='button' value='Người 1 đánh' onclick='danh1()'><input type='button' value='Người 2 Đánh' onclick='danh2()'>";
+        a.innerHTML = "<hr/>" + dulieu;
+        for (i=0;i<13;i++){
+            for (j=0;j<13;j++){
+                if ((bang[i][j]== "x" && bang[i][j] == bang[i][j+1] && bang[i][j] == bang[i][j+2])
+                    || (bang[i][j]== "x" &&bang[i][j] == bang[i+1][j] && bang[i+1][j] == bang[i+2][j])
+                    || (bang[i][j]== "x" &&bang[i][j] == bang[i+1][j+1] && bang[i][j] == bang[i+2][j+2]) ){
+                    alert("You win")
+                }
+            }
+        }
+    }
+
+    function danh2() {
+        let ngang = prompt("Ngang: ");
+        let doc = prompt("Dọc: ");
+        dulieu = "";
+        bang[doc][ngang] = "o";
+        for (let i = 0; i < 15; i++) {
+            dulieu += "<br/>";
+            for (let j = 0; j < 15; j++) {
+                dulieu += bang[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        dulieu += "<br/><br/><input type='button' value='Người 1 đánh' onclick='danh1()'><input type='button' value='Người 2 Đánh' onclick='danh2()'>";
+        a.innerHTML = "<hr/>" + dulieu;
+        for (i=0;i<13;i++){
+            for (j=0;j<13;j++){
+                if ((bang[i][j]== "o" && bang[i][j] == bang[i][j+1] && bang[i][j] == bang[i][j+2])
+                    || (bang[i][j]== "o" && bang[i][j] == bang[i+1][j] && bang[i+1][j] == bang[i+2][j])
+                    || (bang[i][j]== "o" && bang[i][j] == bang[i+1][j+1] && bang[i][j] == bang[i+2][j+2]) ){
+                    alert("You win")
+                }
+            }
+        }
+    }
+
+</script>
+</html>

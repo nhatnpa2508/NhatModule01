@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For lồng For</title>
+</head>
+<body>
+<script>
+    let a,i,j;
+    <!-- Khởi tạo 1 bảng = a với viền = 1px , độ rộng - 300px, khoảng cách giữa các ô là 1px, độ rộng của ô = 5px, căn chữ giữa-->
+    a = "<table border='1' width='300' cellspacing='1' cellpadding='5' style='text-align: center'>";
+    <!-- Thực hiện vòng lăp cho i chạy từ 1 đến 10-->
+    for (i = 1; i <= 10; i++) {
+        <!-- Khi i chạy từ 1 đến 10 cùng lúc thực hiện a = a + hàng-->
+        a = a + "<tr>";
+        <!-- Cùng lúc khi i chạy từ 1 đến 10 thì thực hiện kèm theo lệnh tạo hàng cho bảng là cho j chạy từ 1 đến 10-->
+        for (j = 1; j <= 10; j++) {
+            <!-- trong quá trình cho i chạy từ 1 đến 10 thực hiện a = a + ô  chứa i*j-->
+            a = a + "<td>" + i * j + "</td>";
+        }
+    <!-- Khi thực hiện cái bước trên thì a = a + "<(/)tr>" đóng hàng lại -> quay lại vòng lặp i so sánh điều kiện-->
+        a = a + "</tr>";
+    }
+    <!-- đóng 1 bảng-->
+    a = a + "</table>";
+    <!-- Kết thúc viết ra bảng-->
+    document.write(a);
+</script>
+</body>
+
+</html>
+<!-- -->

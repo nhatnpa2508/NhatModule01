@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập biến,kiểu dữ liệu, toán tử</title>
+    <style>
+        #ketqua {
+            padding: 30px;
+            color: white;
+            background: dimgray;
+        }
+    </style>
+    <style>
+        #cd {
+            padding: 30px;
+            color: black;
+            background: yellowgreen;
+        }
+    </style>
+    <style>
+    #dt {
+        padding: 30px;
+        color: red;
+        background: blue;
+    }
+</style>
+    <style>
+        #chuvihinhtron {
+            padding: 30px;
+            color: blue;
+            background: red;
+        }
+    </style>
+</head>
+<h2>BT1: Tính Điểm trung bình </h2>
+<body>
+<script>document.write("Nhập tên Học Sinh")</script> <input type="text" id="tenhocsinh"><br>
+<script>document.write("Điểm Lý")</script> <input type="text" id="ly"><br>
+<script>document.write("Điểm Hóa")</script> <input type="text" id="hoa"><br>
+<script>document.write("Điểm Sinh")</script> <input type="text" id="sinh"><br>
+<input type="button" value="Điểm trung bình" onclick="diem()"><br>
+<div id="ketqua"></div>
+<script>
+    function diem() {
+        var a = document.getElementById("ly").value;
+        var b = document.getElementById("hoa").value;
+        var c = document.getElementById("sinh").value;
+        var e = document.getElementById("tenhocsinh");
+        d = (parseInt(a) + parseInt(b) + parseInt(c))/3;
+        f = (e);
+        document.getElementById("ketqua").innerHTML = "Điểm trung bình = (" + a + " + " + b + " + " + c  + ")/3 = " + d;
+    }
+</script>
+
+</body>
+<h2>BT2: Đổi độ C sang độ F</h2>
+<body>
+Nhập độ C: <input type="text" id="c"><br>
+<input type="button" value="Chuyển đổi" onclick="chuyen()"><br>
+<div id="cd"></div>
+<script>
+    function chuyen() {
+        var g = document.getElementById("c").value;
+        f = (9*parseInt(g))/5 + 32;
+        document.getElementById("cd").innerHTML = g + "độ C = " + f + "độ F";
+    }
+</script>
+</body>
+
+<h2>BT3: Tính diện tích hình tròn</h2>
+<body>
+Nhập bán kính hình tròn: <input type="text" id="r"> cm <br>
+<input type="button" value="Tính diện tích" onclick="tinh()"><br>
+<div id="dt"></div>
+<script>
+    function tinh() {
+        var r = document.getElementById("r").value;
+        S = parseInt(r)*parseInt(r)*3.14;
+        document.getElementById("dt").innerHTML = "Diện tích hình tròn có bán kính = " + r +"cm là " + S + "cm2";
+    }
+</script>
+</body>
+<h2>BT4: Tính chu vi hình tròn</h2>
+<body>
+Nhập bán kính hình tròn: <input type="text" id="bk">cm<br>
+Hoặc nhập đường kính hình tròn: <input type="text" id="dk">cm <br>
+<input type="button" value="Tính chu vi" onclick="chuvi()"><br>
+<div id="chuvihinhtron"></div>
+<script>
+    function chuvi() {
+        var bk = document.getElementById("bk").value;
+        var dk = document.getElementById("dk").value;
+        if (bk>0){
+            CV = parseInt(bk)*2*3.14;
+            document.getElementById("chuvihinhtron").innerHTML = "Chu vi hình tròn có bán kính = " + bk + "cm là " + CV.toFixed(2) + "cm";
+        }
+        if (dk>0){
+            CV = parseInt(dk)*3.14;
+            document.getElementById("chuvihinhtron").innerHTML = "Chu vi hình tròn có đường kính = " + dk + "cm là " + CV.toFixed(2) + "cm";
+        }
+    }
+</script>
+</body>
+</html>
