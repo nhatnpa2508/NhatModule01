@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số từ trong mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Đếm số từ trong mảng</legend>
+        Nhập ký tự vào chuôi: <input type="text" id="add"><input type="button" value="Nhập" onclick="addin()"><br>
+        <div id="sting"></div><br>
+        Số từ trong chuỗi: <br>
+        <div id="result"></div><br>
+    </fieldset>
+</form>
+</body>
+<script>
+    let array = Array();
+    let i=0,j = 0;
+    function addin() {
+        array[i] = document.getElementById("add").value;
+        document.getElementById("sting").innerHTML = array;
+        document.getElementById("add").value = "";
+        if ((isNaN(array[i]))){
+            j+=1;
+        }
+        i++;
+        document.getElementById("result").innerHTML = j;
+    }
+</script>
+</html>

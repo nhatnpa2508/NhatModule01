@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In ra các phần tử trong mảng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let array = [
+        [1, 2, 3, 4],
+        [8, 9, 10, 11],
+        [17, 18, 19, 20],
+        [27, 29, 31, 33],
+        [3, 13, 23, 33]
+    ];
+    for (let i in array){
+        document.write("Hàng thứ " + i + "<br>");
+        for (let j in array[i]){
+            document.write(array[i][j] + "<br>")
+        }
+    }
+
+</script>
+</html>

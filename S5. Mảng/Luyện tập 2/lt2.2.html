@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đảo các ký tự trong mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Đảo các ký tự trong mảng</legend>
+        Nhập ký tự vào chuôi: <input type="text" id="add"><input type="button" value="Nhập" onclick="addin()"><br>
+        <div id="sting"></div><br>
+        <input type="button" value="Đảo" onclick="change()">
+        <div id="result"></div><br>
+    </fieldset>
+</form>
+
+</body>
+<script>
+    let array = Array();
+    let i = 0;
+    function addin() {
+        array[i] = document.getElementById("add").value;
+        i++;
+        document.getElementById("sting").innerHTML = array;
+        document.getElementById("add").value = "";
+    }
+    function change() {
+        let lengthA = array.length-1;
+        let index = "";
+        for (let j = 0; j < lengthA; j++){
+            index = array[j];
+            array[j] = array[lengthA];
+            array[lengthA] = index;
+            lengthA--;
+        }
+        document.getElementById("result").innerHTML = array;
+    }
+</script>
+</html>

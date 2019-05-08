@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đổi dấu</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Đổi dấu "-" thành "_"</legend>
+        Nhập mảng <input type="text" id="mang"><input type="button" value="Nhập" onclick="addin()"><br>
+        <div id="sting"></div>
+        <br>
+        <input type="button" value="Đổi dấu" onclick="change1()"><br>
+        <div id="result"></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    let array = Array();
+    let i = 0;
+    function addin() {
+        array[i] = document.getElementById("mang").value;
+        i++;
+        document.getElementById("mang").value = "";
+        document.getElementById("sting").innerHTML = array;
+    }
+    function change1() {
+        let lengthA = array.length
+        for (let j = 0; j< lengthA; j++){
+            if (array[j] == "-"){
+                array[j] = "_";
+            }
+        }
+        document.getElementById("result").innerHTML = array;
+    }
+</script>
+</html>

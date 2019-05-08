@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra 2 mảng có giống nhau không</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Kiểm tra 2 mảng có giống nhau không</legend>
+        Nhập mảng 1<input type="text" id="mang1"><input type="button" value="Nhập" onclick="add1()"><br>
+        <div id="sting1"></div>
+        <br>
+        Nhập mảng 2<input type="text" id="mang2"><input type="button" value="Nhập" onclick="add2()"><br>
+        <div id="sting2"></div>
+        <br>
+        <input type="button" value="Kiểm tra" onclick="check12()"><br>
+        <div id="result"></div>
+        <br>
+    </fieldset>
+</form>
+</body>
+<script>
+    let array1 = Array();
+    let array2 = Array();
+    let i = 0, j = 0;
+    let count=0;
+
+    function add1() {
+        array1[i] = document.getElementById("mang1").value;
+        i++;
+        document.getElementById("sting1").innerHTML = "Chuỗi: " + array1 + " có " + (i)+ " ký tự";
+        document.getElementById("mang1").value = "";
+    }
+
+    function add2() {
+        array2[j] = document.getElementById("mang2").value;
+        j++;
+        document.getElementById("sting2").innerHTML = "Chuỗi: " + array2 + " có " + (j)+ " ký tự";
+        document.getElementById("mang2").value = "";
+    }
+
+    function check12() {
+        if ( i == j){
+            for (let k = 0; k < i; k++){
+                if (array1[k] == array2[k]) {
+                    count++;
+                }
+            } if ( count == i) {
+                document.getElementById("result").innerHTML = "Trùng nhau";
+            } else {
+                document.getElementById("result").innerHTML = "Không trùng nhau";
+            }
+        } else {
+            document.getElementById("result").innerHTML = "Không trùng nhau";
+        }
+    }
+</script>
+</html>
