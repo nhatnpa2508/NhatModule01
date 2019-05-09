@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị nhỏ nhất</title>
+</head>
+<body>
+
+</body>
+<script>
+    let array1= [3, 5, 1, 8, -3, 7, 8];
+    let array2= [7, 12, 6, 9, 20, 56, 89];
+    let array3= [];
+    let array4= [0, 0, 0, 0, 0, 0];
+
+    function minArray(array) {
+        if (array.length == 0) {
+            return "Không có";
+        }
+        let min = array[0];
+        for (i = 0; i < array.length; i++) {
+            if (min > array[i]) {
+                min = array[i];
+            }
+        }
+        return min;
+    }
+
+    let min1 = minArray(array1);
+    document.write("Min of Array1 = " + min1 + "<br>");
+    let min2 = minArray(array2);
+    document.write("Min of Array2 = " + min2 + "<br>");
+    let min3 = minArray(array3);
+    document.write("Min of Array3 = " + min3 + "<br>");
+    let min4 = minArray(array4);
+    document.write("Min of Array4 = " + min4 + "<br>");
+</script>
+</html>
