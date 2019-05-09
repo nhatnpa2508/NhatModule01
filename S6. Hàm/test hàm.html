@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Scoping Example</title>
+</head>
+<body>
+<script type="text/javascript">
+    function square(x) {
+        x = x * x;
+    }
+    let y = 10;
+    let a = square(y);
+    console.log(a); // -- no change
+</script>
+</body>
+</html>
