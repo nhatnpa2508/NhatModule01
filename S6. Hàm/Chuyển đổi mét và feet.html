@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form style="font-size: 20px; line-height: 40px">
+    <fieldset>
+        <legend><h3>Chuyển giữa mét và feet</h3></legend>
+        Nhập số mét <input type="number" placeholder="Nhập số mét" oninput="changeFeet(this.value)"
+                           onchange="changeFeet(this.value)" id="met"> &nbsp;&nbsp;&nbsp;Mét sang feet : <span id="resultFeet"></span><br>
+        Nhập số feet <input type="number" placeholder="Nhập số feet" oninput="changeMet(this.value)"
+                           onchange="changeMet(this.value)" id="feet"> &nbsp;&nbsp;&nbsp;Feet sang mét : <span id="resultMet"></span><br>
+    </fieldset>
+</form>
+</body>
+<script>
+    function changeFeet(numMet) {
+        document.getElementById("resultFeet").innerHTML = numMet + " mét = " +(3.27869*numMet).toFixed(3) + " feet";
+    }
+    function changeMet(numFeet) {
+        document.getElementById("resultMet").innerHTML = numFeet + " feet = " +0.305*numFeet + " mét";
+    }
+</script>
+</html>
