@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game ghép ảnh</title>
+</head>
+<body style="text-align: center">
+<div>
+<img src="img/gau1.jpg" alt="img/gau1.jpg" id="img1" onclick="change1()" width="480" height="260"/><br>
+<img src="img/gau2.jpg" alt="img/gau2.jpg" id="img2" onclick="change2()" width="480" height="260"/><br>
+<img src="img/gau3.jpg" alt="img/gau3.jpg" id="img3" onclick="change3()" width="480" height="260"/><br>
+</div>
+</body>
+<script>
+    const gau1 = 'img/gau1.jpg';
+    const gau2 = 'img/gau2.jpg';
+    const gau3 = 'img/gau3.jpg';
+    const cat1 = 'img/cat1.jpg';
+    const cat2 = 'img/cat2.jpg';
+    const cat3 = 'img/cat3.jpg';
+    const dog1 = 'img/dog1.jpg';
+    const dog2 = 'img/dog2.jpg';
+    const dog3 = 'img/dog3.jpg';
+    let IMG = [
+        [gau1,gau2,gau3],
+        [cat1,cat2,cat3],
+        [dog1,dog2,dog3]
+    ];
+    let i = 1;
+
+    function change1() {
+        let img1 = document.getElementById('img1');
+        let n = i%3;
+        img1.alt = IMG[n][0];
+        img1.src = IMG[n][0];
+        i=i+1;
+        if ((img1.alt ===cat1 && img2.alt===cat2 && img3.alt===cat3)
+            ||(img1.alt===gau1 && img2.alt===gau2 && img3.alt===gau3)
+            ||(img1.alt===dog1 && img2.alt===dog2 && img3.alt===dog3) ){
+            alert("You win");
+        }
+    }
+
+    function change2() {
+        let img2 = document.getElementById("img2");
+        let n = i%3;
+        img2.alt = IMG[n][1];
+        img2.src = IMG[n][1];
+        i=i+1;
+        if ((img1.alt ===cat1 && img2.alt===cat2 && img3.alt===cat3)
+            ||(img1.alt===gau1 && img2.alt===gau2 && img3.alt===gau3)
+            ||(img1.alt===dog1 && img2.alt===dog2 && img3.alt===dog3) ){
+            alert("You win");
+        }
+    }
+    function change3() {
+        let img3 = document.getElementById("img3");
+        let n = i%3;
+        img3.alt = IMG[n][2];
+        img3.src = IMG[n][2];
+        i=i+1;
+        if ((img1.alt ===cat1 && img2.alt===cat2 && img3.alt===cat3)
+            ||(img1.alt===gau1 && img2.alt===gau2 && img3.alt===gau3)
+            ||(img1.alt===dog1 && img2.alt===dog2 && img3.alt===dog3) ){
+            alert("You win");
+        }
+    }
+
+</script>
+</html>
