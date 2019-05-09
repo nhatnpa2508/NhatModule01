@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gọi hàm từ thẻ body và tăng lên 1 đơn vị</title>
+</head>
+<body onload="addOne()">
+
+</body>
+<script>
+    function addOne() {
+        let num = parseInt(prompt("Nhập vào 1 dãy số bất kỳ"));
+        let a = 0;
+        if (isNaN(num)) {
+            prompt("Nhập lại số");
+        } else {
+            a = num + 1;
+            alert("Tăng cho thêm 1 đơn vị này "+ a);
+        }
+    }
+</script>
+</html>

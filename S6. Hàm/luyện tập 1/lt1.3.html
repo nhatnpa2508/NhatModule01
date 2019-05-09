@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập 2 số và đưa ra thông báo</title>
+</head>
+<body onload="addOne()">
+
+</body>
+<script>
+    function addOne() {
+        let num1 = parseInt(prompt("Nhập vào số thứ nhất"));
+        if (isNaN(num1)) {
+            prompt("Nhập lại số thứ nhất");
+        }
+        let num2 = parseInt(prompt("Nhập vào số thứ hai "));
+        if (isNaN(num2)) {
+            prompt("Nhập lại số thứ hai");
+        }
+        if (num1>num2){
+            alert("Số thứ nhất: " + num1 + " lớn hơn số thứ hai: " + num2);
+        } else {
+            let sum = num1 + num2;
+            alert("Tổng của hai số là: " + sum)
+        }
+    }
+</script>
+</html>

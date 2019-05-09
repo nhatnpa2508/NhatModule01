@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm ngôi sao theo tên</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend><h2>Tìm tên sao theo tên bạn</h2></legend>
+        Nhập tên bạn: <input type="text" id="name" placeholder="Tên của bạn"><input type="button" value="Tìm"
+                                                                                    onclick="findStar()"><br>
+        <span id="star"></span><br><br>
+        Gợi ý: Polaris, Aldebaran, Deneb, Vega, Altair, Dubhe và Regulus
+    </fieldset>
+</form>
+
+</body>
+<script>
+    let array = [
+        ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"],
+        ["Sao chổi", "Sao băng", "Sao đêm", "Sao biển", "Sao sáng", "Sao lấp lánh", "Sao sao j mà sao hoài vậy"]
+    ];
+
+    function findStar() {
+        let name = document.getElementById("name").value;
+        for (let i = 0; i < 7; i++) {
+            if (name == array[0][i]) {
+                console.log(array[0][i]);
+                document.getElementById("star").innerHTML = "Tên bạn theo Star: " + array[1][i];
+                break;
+            } else {
+                document.getElementById("star").innerHTML = "Tên bạn không có trong danh sách";
+            }
+        }
+    }
+</script>
+</html>
