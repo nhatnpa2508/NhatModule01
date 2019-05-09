@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra trùng ký tự trong mảng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Kiểm tra ký tự nhập có trùng với ký tự trong mảng không</legend>
+        Nhập các phần tử vào mảng ký tự: <input type="text" id="characters" placeholder="Nhập vào đây"><input
+            type="button" value="Nhập" onclick="inputChar()"><br>
+        Chuỗi hiện tại: <span id="string"></span><br>
+        Nhập ký tự kiểm tra trùng: <input type="text" id="test">
+        <input type="button" value="Kiểm tra" onclick="checkChar()"><br>
+        <span id="result"></span>
+    </fieldset>
+</form>
+</body>
+<script>
+    function checkArray(a, array1) {
+        let long = array1.length;
+        count = 0;
+        for (i = 0; i < long; i++) {
+            if (a == array1[i]) {
+                count++;
+            }
+        }
+        if (count == 0) {
+            return "Không trùng ký tự trong mảng";
+        } else return "Trùng ký tự trong mảng " + count + " vị trí";
+    }
+
+    let array = Array();
+    let j = 0;
+
+    function inputChar() {
+        array[j] = document.getElementById("characters").value;
+        j++;
+        document.getElementById("characters").value = "";
+        document.getElementById("string").innerHTML = array;
+    }
+
+    function checkChar() {
+        let character = document.getElementById("test").value;
+        let checkCharacter = checkArray(character, array);
+        document.getElementById("result").innerHTML = checkCharacter;
+    }
+</script>
+</html>

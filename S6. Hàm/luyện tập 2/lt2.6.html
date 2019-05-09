@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên dương</title>
+</head>
+<body>
+<form style="font-size: 20px; line-height: 30px">
+    <fieldset>
+        <legend><h2>Kiểm tra số nguyên dương</h2></legend>
+        Nhập vào 1 số bất kỳ: <input type="text" id="num" placeholder="Nhập số coi"><input type="button" value="Kiểm tra" onclick="check()"><br>
+        <span id="result"></span>
+    </fieldset>
+</form>
+</body>
+<script>
+    function checkInteger(num) {
+        if (isNaN(num))
+            return "Không phải số";
+        if (num ==0)
+            return "Số này là số 0";
+        else if (num > 0){
+            return "Số này là số nguyên dương";
+        } else return  "Số này là số nguyên âm";
+    }
+    function check() {
+        let numberInput = parseInt(document.getElementById("num").value);
+        let checkNum = checkInteger(numberInput);
+        document.getElementById("result").innerHTML = checkNum;
+    }
+</script>
+</html>

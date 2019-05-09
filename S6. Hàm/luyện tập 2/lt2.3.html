@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giai thừa của một số nguyên bất kỳ</title>
+</head>
+<body>
+
+</body>
+<script>
+    function giaithua(number) {
+        if (isNaN(number)) return false;
+        let factorial = number;
+        for (let i = 1; i < number;i++) {
+            factorial = factorial*i;
+        }
+        return ("Giai thừa của " + number + " = " + factorial);
+    }
+    let num = giaithua(5);
+    document.write(num);
+</script>
+</html>

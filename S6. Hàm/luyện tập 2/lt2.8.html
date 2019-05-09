@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đảo mảng số nguyên</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Đảo mảng số nguyên</legend>
+        Nhập các phần tử vào mảng số: <input type="text" id="Num" placeholder="Nhập số vào"><input type="button" value="Nhập" onclick="inputNum()"><br>
+        Chuỗi hiện tại: <span id="string"></span><br>
+        <input type="button" value="Đảo" onclick="changeString()"><br>
+        <span id="result"></span>
+    </fieldset>
+</form>
+</body>
+<script>
+    function reverseString(array1) {
+        let i;
+        let long = parseInt(array1.length);
+        let a;
+        for (i = 0; i < long; i++) {
+            if (isNaN(array1[i])) {
+                return "Có chứa ký tự khác số";
+                break;
+            }
+        }
+        for (i = 0; i < long; i++) {
+            a = array1[i];
+            array1[i] = array1[long-1];
+            array1[long-1] = a;
+            long--;
+        }
+        return "Mảng đảo = " + array1;
+    }
+    let array = Array();
+    let j = 0;
+    function inputNum() {
+        array[j] = document.getElementById("Num").value;
+        j++;
+        document.getElementById("Num").value = "";
+        document.getElementById("string").innerHTML = array;
+
+    }
+    function changeString() {
+        let change = reverseString(array);
+        document.getElementById("result").innerHTML = change;
+    }
+</script>
+</html>

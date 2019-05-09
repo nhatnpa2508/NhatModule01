@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm tính bình phương của một số bất kỳ</title>
+</head>
+<body>
+<form style="line-height: 30px; font-size: 20px">
+    <fieldset>
+        <legend><h3>Bình phương của một số</h3></legend>
+        Nhập số vào ô: <input type="number" placeholder="Nhập số vào đây coi" oninput="squareNum()" id="num" onchange="squareNum()"><br>
+        Kết quả: <span id="result"></span>
+    </fieldset>
+</form>
+</body>
+<script>
+    function squareNum() {
+
+        let num = parseInt(document.getElementById("num").value);
+        if ((isNaN(num))){
+            alert("Nhập số vào")
+        }
+        let numsquare = num*num
+        document.getElementById("result").innerHTML = "Bình phương của " + num + " = " + numsquare;
+            }
+</script>
+</html>

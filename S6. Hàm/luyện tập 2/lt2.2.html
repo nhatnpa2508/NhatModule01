@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viết hàm tính diện tích, hàm tính chu vi hình tròn</title>
+</head>
+<body>
+
+</body>
+<script>
+    function dientich_chuvi(bankinh) {
+        if (isNaN(bankinh))
+            return false;
+        tich = bankinh*bankinh*3.14;
+        chuvi = bankinh*2*3.14;
+        return ("Diện tích = " + tich.toFixed(2)  + " cm"+ "<br>" + "Chu vi = " + chuvi.toFixed(2)+ " cm")
+    }
+    let hinhtron = dientich_chuvi(5);
+    document.write(hinhtron)
+</script>
+</html>

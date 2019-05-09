@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đổi chỗ 2 số</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Nhập vào 2 số bất kỳ</legend>
+        Nhập vào số thứ nhất: <input type="text" id="num1" placeholder="Nhập số đầu" oninput="getNum()" onchange="getNum()"><br>
+        Nhập vào số thứ hai: <input type="text" id="num2" placeholder="Nhập số thứ hai"oninput="getNum()" onchange="getNum()"><br>
+        <div id="num1num2"></div><br>
+        <div id="result"></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    function changeAB(numA,numB) {
+        if (isNaN(numA)) return "Nhập sai";
+        if (isNaN(numB)) return "Nhập sai";
+        let numC = numA;
+        numA = numB;
+        numB = numC;
+        return ("Số thứ nhất = "+ numA + "<br> Số thứ hai = "+numB)
+    }
+    function getNum() {
+        let number1 = parseInt(document.getElementById("num1").value);
+        let number2 = parseInt(document.getElementById("num2").value);
+        document.getElementById("num1num2").innerHTML = "Số thứ nhất nhập vào là " + number1 + "<br> Số thứ hai nhập vào là " + number2;
+        let changeNum = changeAB(number1,number2);
+        document.getElementById("result").innerHTML = changeNum;
+    }
+</script>
+</html>

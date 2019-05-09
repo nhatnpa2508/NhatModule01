@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm số nhỏ nhất trong 3 số</title>
+</head>
+<body>
+
+</body>
+<script>
+    function minNum(a, b, c) {
+        if (isNaN(a)) return false;
+        if (isNaN(b)) return false;
+        if (isNaN(c)) return false;
+        let min = a;
+        if (min > b) {
+            min = b;
+            if (min > c) {
+                min = c;
+                return c;
+            } else return b
+        } else if (min > c) {
+            min = c;
+            return c;
+        } else return a;
+    }
+
+    let num1 = parseInt(prompt("Nhập vào số đầu tiên"));
+    let num2 = parseInt(prompt("Nhập vào số thứ hai"));
+    let num3 = parseInt(prompt("Nhập vào số thứ ba"));
+    let minOfNum = minNum(num1, num2, num3);
+    document.write("Đáp án: " + minOfNum);
+
+</script>
+</html>
