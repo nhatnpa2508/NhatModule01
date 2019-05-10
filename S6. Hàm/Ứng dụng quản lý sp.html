@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm</title>
+</head>
+<body onchange="updateProd()">
+<form>
+    <fieldset style="height: 500px">
+        <legend>Ứng dụng quản lý sản phẩm</legend>
+        <input type="button" value="Nhập sản phẩm muốn thêm" onclick="addProd(),updateProd()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Nhập sản phẩm muốn sửa" onclick="fixProd(),updateProd()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Nhập sản phẩm muốn xóa" onclick="delProd(),updateProd()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <p style="color: gray">List sản phẩm : <span id="list"></span></p>
+        <div id="list2"></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    let array = Array([],[]);
+    let i = 0,j=0;
+    let product = "";
+
+    function addProd() {
+        array[0][i] = prompt("Nhập sản phẩm muốn thêm");
+        array[1][i] = prompt("Mô tả sản phẩm");
+        i++;
+        document.getElementById("list").innerHTML = "(" + i + ")" + array[0];
+    }
+
+    function delProd() {
+        product = prompt("Nhập sản phẩm muốn xóa");
+        let long = 100;
+        for (let j = 0; j < long; j++) {
+            if (array[0][j] == product) {
+                array[0].splice(j, 1);
+                array[1].splice(j, 1);
+                i--;
+            }
+        }
+        document.getElementById("list").innerHTML = "(" + i + ")" + array[0];
+    }
+
+    function fixProd() {
+        product = prompt("Nhập sản phẩm muốn sửa");
+        let long = 100;
+        for (let j = 0; j < long; j++) {
+            if (array[0][j] == product) {
+                array[0][j] = prompt("Nhập tên mới");
+                array[1][j] = prompt("Nhập mô tả mới");
+                break;
+            }
+        }
+        alert("Kho không chứa sản phẩm bạn muốn sửa");
+        document.getElementById("list").innerHTML = "(" + i + ")" + array[0];
+    }
+
+    function updateProd() {
+        let a = "<table border='1px' width='500px' cellpadding='30px'><tr style='text-align: center'><td>STT</td><td>TÊN SẢN PHẨM</td><td>MÔ TẢ</td></tr>";
+        let b, c;
+        for (c = 0; c < i; c++) {
+            a = a + "<tr style='line-height: 30px;'><td>" + (c+1) +"</td><td>"+  array[0][c] +"</td><td>" +array[1][c] + "</td></tr>"
+        }
+        a = a + "</table>";
+        document.getElementById("list2").innerHTML = a;
+    }
+</script>
+</html>

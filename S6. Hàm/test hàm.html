@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Ứng dụng quản lý sản phẩm</title>
 </head>
-
 <body>
-<script>
-    function isPalindrome(str){
-        let n = str.length-1;
-        for ( let i=0; i<n/2; i++){
-            if (str.charAt(i)!=str.charAt(n-i)){
-                return false;
-            }
-        }
-        return true;
-    }
-    isPalindrome(prompt("Nhập từ"));
-</script>
+<form>
+    <fieldset style="height: 500px">
+        <legend>Ứng dụng quản lý sản phẩm</legend>
+        <input type="button" value="Nhập sản phẩm muốn thêm" onclick="addProd()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Nhập sản phẩm muốn sửa" onclick="fixProd()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Nhập sản phẩm muốn xóa" onclick="delProd()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <p style="color: gray">List sản phẩm : <span id="list"></span></p>
+        <input type="button" value="Update" onclick="updateProd()">
+        <div id="list2"></div>
+    </fieldset>
+</form>
 </body>
+<script>
+    let array = Array();
+    let i = 0;
+    let product = "";
 
+    function addProd() {
+        array[i] = prompt("Nhập sản phẩm muốn thêm");
+        i++;
+        document.getElementById("list").innerHTML = "(" + i + ")" + array;
+    }
+    function delProd(x,array) {
+        array.splice(x, 1);
+        i--;
+    document.getElementById("list").innerHTML = "(" + i + ")" + array;
+    }
+    function fixProd(x, array) {
+        array[x] = prompt("Nhập tên mới");
+    document.getElementById("list").innerHTML = "(" + i + ")" + array;
+    }
+
+    function updateProd() {
+        let a = "<table border='1px' width='500px' cellpadding='30px'><tr style='text-align: center'><td>TÊN SẢN PHẨM</td><td>CHỈNH SỬA</td><td>XÓA</td></tr>";
+        let c;
+        for (c = 0; c < i; c++) {
+            a = a + "<tr><td>" + array[c] + "</td><td>" + "<input type='button' onclick='fixProd(c,array)' value='Fix'>" + "</td><td>" + "<input type='button' value='Del' onclick='delProd(c,array)'>" + "</td></tr>"
+        }
+        a = a + "</table>";
+        document.getElementById("list2").innerHTML = a;
+    }
+</script>
 </html>
