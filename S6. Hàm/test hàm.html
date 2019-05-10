@@ -1,16 +1,26 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Scoping Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-<script type="text/javascript">
-    function square(x) {
-        x = x * x;
+<script>
+    function isPalindrome(str){
+        let n = str.length-1;
+        for ( let i=0; i<n/2; i++){
+            if (str.charAt(i)!=str.charAt(n-i)){
+                return false;
+            }
+        }
+        return true;
     }
-    let y = 10;
-    let a = square(y);
-    console.log(a); // -- no change
+    isPalindrome(prompt("Nhập từ"));
 </script>
 </body>
+
 </html>

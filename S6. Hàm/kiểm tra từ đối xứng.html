@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra từ tối xứng</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Kiểm tra từ đối xứng</legend>
+        Nhập từ cần kiểm tra: <input type="text" id="words" placeholder="Nhập vào đây"><input
+            type="button" value="Kiểm tra" onclick="inputWords()"><br>
+        <span id="result"></span>
+    </fieldset>
+</form>
+</body>
+<script>
+    function checkWords(words) {
+        let newWords = "";
+        let long = words.length;
+        for (let i = long; i >= 0; i--){
+            newWords += words.charAt(i);
+        }
+        if (newWords == words) return ( words + " là từ đối xứng")
+        else return ( words + " là từ không đối xứng")
+    }
+    function inputWords() {
+        const wordsA = document.getElementById("words").value;
+        let checkA = checkWords(wordsA);
+        document.getElementById("result").innerHTML = checkA;
+    }
+</script>
+</html>
