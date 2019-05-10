@@ -6,17 +6,40 @@
     <link rel="stylesheet" type="text/css" href="gfc.css">
 </head>
 <body>
-<div class="switch"><input type="checkbox" />
-    <label><i></i></label></div>
+Thử tích cả 3 cái xem<br>
+<label class="switch"><input type="checkbox" id="good" onclick=chooseGood()></label>
+<p><b>Good</b></p><br>
+<label class="switch"><input type="checkbox" id="cheap" onclick=chooseCheap()></label>
+<p><b>Cheap</b></p><br>
+<label class="switch"><input type="checkbox" id="fast" onclick=chooseFast()></label>
+<p><b>Fast</b></p>
 </body>
 <script>
-let number = 5;
+    function chooseGood() {
+        let good = document.getElementById("good").checked;
+        let fast = document.getElementById("fast").checked;
+        let cheap = document.getElementById("cheap").checked;
+        if (cheap == true && fast == true) {
+            document.getElementById("fast").checked = false
+        }
+    }
 
-if (number++ > 5) {
-number += 1;
-} else {
-number -= 1;
-}
-alert(number)
+    function chooseFast() {
+        let good = document.getElementById("good").checked;
+        let fast = document.getElementById("fast").checked;
+        let cheap = document.getElementById("cheap").checked;
+        if (good == true && cheap == true) {
+            document.getElementById("cheap").checked = false
+        }
+    }
+
+    function chooseCheap() {
+        let good = document.getElementById("good").checked;
+        let fast = document.getElementById("fast").checked;
+        let cheap = document.getElementById("cheap").checked;
+        if (good == true && fast == true) {
+            document.getElementById("good").checked = false
+        }
+    }
 </script>
 </html>
