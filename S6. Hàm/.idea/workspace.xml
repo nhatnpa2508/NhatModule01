@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121b585d-ea1b-4101-b4e8-be411b75f0b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.6.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/luyện tập 2/lt2.9.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -25,41 +16,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.6.html">
+        <entry file="file://$PROJECT_DIR$/Ứng dụng quản lý sp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+            <state relative-caret-position="1088">
+              <caret line="64" column="55" lean-forward="true" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
               <folding>
-                <element signature="n#style#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.7.html">
+        <entry file="file://$PROJECT_DIR$/../S4. Cấu trúc lặp/bangcuuchuong/bangcuuchuong.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.8.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" selection-start-line="7" selection-end-line="15" selection-end-column="7" />
+            <state relative-caret-position="357">
+              <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.9.html">
+        <entry file="file://$PROJECT_DIR$/../S5. Mảng/Bàn cờ caro.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-            </state>
+            <state relative-caret-position="-153" />
           </provider>
         </entry>
       </file>
@@ -78,7 +61,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test hàm.html" />
         <option value="$PROJECT_DIR$/tạo và gọi hàm.html" />
         <option value="$PROJECT_DIR$/Chuyển đổi nhiệt độ.html" />
         <option value="$PROJECT_DIR$/Tìm giá trị nhỏ nhất trong mảng.html" />
@@ -99,6 +81,9 @@
         <option value="$PROJECT_DIR$/luyện tập 2/lt2.7.html" />
         <option value="$PROJECT_DIR$/luyện tập 2/lt2.8.html" />
         <option value="$PROJECT_DIR$/luyện tập 2/lt2.9.html" />
+        <option value="$PROJECT_DIR$/kiểm tra từ đối xứng.html" />
+        <option value="$PROJECT_DIR$/test hàm.html" />
+        <option value="$PROJECT_DIR$/Ứng dụng quản lý sp.html" />
       </list>
     </option>
   </component>
@@ -119,6 +104,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -146,12 +137,14 @@
       <updated>1557375109557</updated>
       <workItem from="1557375112746" duration="2035000" />
       <workItem from="1557383718409" duration="14077000" />
-      <workItem from="1557405710491" duration="7539000" />
+      <workItem from="1557405710491" duration="9284000" />
+      <workItem from="1557450167662" duration="13408000" />
+      <workItem from="1557471904901" duration="604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23651000" />
+    <option name="totallyTimeSpent" value="39408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -180,13 +173,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test hàm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tạo và gọi hàm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -297,13 +283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.7.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Chuyển đổi mét và feet.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -324,18 +303,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.7.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.8.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="119">
           <caret line="7" selection-start-line="7" selection-end-line="15" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/luyện tập 2/lt2.9.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="17" selection-end-column="7" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kiểm tra từ đối xứng.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-289">
+          <caret line="4857" column="4" selection-start-line="4857" selection-start-column="4" selection-end-line="4857" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test hàm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="40" column="151" selection-start-line="40" selection-start-column="140" selection-end-line="40" selection-end-column="151" />
+          <folding>
+            <element signature="n#style#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1782#1788#0" expanded="true" />
+            <element signature="e#1788#1794#0" expanded="true" />
+            <element signature="e#1794#1800#0" expanded="true" />
+            <element signature="e#1800#1806#0" expanded="true" />
+            <element signature="e#1806#1812#0" expanded="true" />
+            <element signature="e#1951#1957#0" expanded="true" />
+            <element signature="e#1957#1963#0" expanded="true" />
+            <element signature="e#1963#1969#0" expanded="true" />
+            <element signature="e#1969#1975#0" expanded="true" />
+            <element signature="e#1975#1981#0" expanded="true" />
+            <element signature="e#2121#2127#0" expanded="true" />
+            <element signature="e#2127#2133#0" expanded="true" />
+            <element signature="e#2133#2139#0" expanded="true" />
+            <element signature="e#2139#2145#0" expanded="true" />
+            <element signature="e#2145#2151#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ứng dụng quản lý sp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" column="55" lean-forward="true" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#fieldset#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../S4. Cấu trúc lặp/bangcuuchuong/bangcuuchuong.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../S5. Mảng/Bàn cờ caro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153" />
       </provider>
     </entry>
   </component>

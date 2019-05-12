@@ -16,20 +16,20 @@
     </fieldset>
 
     <script>
-        let x = Array();
+        let arr = Array();
         let i = 0;
 
         function nhapvao(){
-            x[i] = document.getElementById("input").value;
-            alert("Element: " + x[i] + " Added at index " + i);
+            arr[i] = document.getElementById("input").value;
+            alert("Element: " + arr[i] + " Added at index " + i);
             i++;
             document.getElementById("input").value = "";
         }
         function xuatra() {
             let giatri = parseInt(document.getElementById("output").value);
-            for (let j = 0; j < x.length; j++){
-                if (giatri == x[j]){
-                   document.getElementById("screen").innerHTML = ("Value " + x[j] + "found at " + j);
+            for (let j = 0; j < arr.length; j++){
+                if (giatri == arr[j]){
+                   document.getElementById("screen").innerHTML = ("Value " + arr[j] + "found at " + j);
                 }
             }
         }

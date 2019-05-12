@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do you love me</title>
+</head>
+<body>
+<h1 style="position: absolute; left: 400px; top: 200px; color: deeppink">Do you love me</h1><br>
+<input type="button" value="Có" onclick="yes()" style="position: absolute; background: gray; color: red; left: 430px; top: 250px;">
+<input type="button" value="Không" id="n1" onmouseover="no()" style="position: absolute; color: white; background: black; left: 470px; top: 250px">
+<script>
+    let a = null;
+    a = document.getElementById("n1");
+    b = window.innerWidth;
+    c = window.innerHeight;
+
+    function yes() {
+        alert("Tôi cũng yêu bạn");
+
+    }
+    function no() {
+        a.style.color = "red";
+        a.style.left = Math.random()*b + "px";
+        a.style.top = Math.random()*c +"px";
+    }
+    document.getElementById("n1").onmouseout = function () {
+        a.style.color = "white";
+    }
+</script>
+</body>
+</html>

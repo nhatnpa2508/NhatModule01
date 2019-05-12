@@ -13,10 +13,10 @@
             a = "<table border='2' width='800' cellspacing='2' cellpadding='5' text-align='left'>";
             var b,c;
             b = c = 0;
-            for (b = 2; b <10; b++){
+            for (b = 1; b <10; b++){
                 a = a + "<tr>";
-                for (c = 1; c <10; c++) {
-                    a= a + "<td>" +b + " x " + c + " = " + b*c + "</td>";
+                for (c = 2; c <10; c++) {
+                    a= a + "<td>" +c + " x " + b + " = " + b*c + "</td>";
                 } a = a + "</tr>";
             } a = a + "</table>";
             document.write(a)

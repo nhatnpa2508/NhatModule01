@@ -11,23 +11,23 @@
     <textarea name="txt" style="border: 10px;width: 250px; height: 250px" onkeydown="typeTextarea()"></textarea>
 </form>
 <script>
-    let a = [" ","T","Ô","I"," ","Đ","É","O"," ","C","H","Ơ","I"];
-    let n ="";
+    let arr = [" ","T","Ô","I"," ","Đ","É","O"," ","C","H","Ơ","I"];
+    let newArr ="";
 
     function typeTextarea() {
         t = document.f.txt.value;
         j = t.length;
         if (j>0){
             for (let i = 1; i <=j;i++){
-                n += a[i];
+                newArr += arr[i];
                 if (i == 13){
                     document.f.txt.value = "";
-                    n = "";
+                    newArr = "";
                 }
             }
         }
-        document.f.txt.value = n;
-        n="";
+        document.f.txt.value = newArr;
+        newArr="";
         setTimeout("typeTextarea()", 1);
 
     }
