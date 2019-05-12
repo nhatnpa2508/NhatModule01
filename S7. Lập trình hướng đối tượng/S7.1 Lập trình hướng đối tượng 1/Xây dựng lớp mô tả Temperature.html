@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Đổi độ C sang độ F và độ K</legend>
+        Nhập độ C: <input type="text" id="inputC"><br>
+        <input type="button" value="Chuyển" onclick="changeC()">
+        <div id="result"></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    let doC = function (temp) {
+        this.temp = temp;
+        this.getC = function () {
+            return temp;
+        }
+        this.getF = function () {
+            return temp + " độ C = " +(temp*1.8 + 32)+" độ F";
+        }
+        this.getK = function () {
+            return temp + " độ C = " +(temp + 273.15) + " độ K";
+        }
+    }
+    function changeC() {
+        let do_C = parseFloat(document.getElementById("inputC").value);
+        let change = new doC(do_C);
+        let do_F = change.getF();
+        let do_K = change.getK();
+        document.getElementById("result").innerHTML = do_F + "<br>" + do_K;
+    }
+</script>
+</html>
