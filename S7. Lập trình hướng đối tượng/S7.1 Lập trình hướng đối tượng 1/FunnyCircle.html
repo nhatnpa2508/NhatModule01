@@ -8,13 +8,10 @@
 <canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid#d3d3d3;"></canvas>
 </body>
 <script>
-    function circle(_width,_height,radius) {
+    let circle = function(_width,_height,radius) {
         this._width = _width;
         this._height = _height;
-        this.radius = radius;
-        this.speedWidth = 3;
-        this.speedHeight = 3;
-    }
+        this.radius = radius;    }
     function getRandomHex(){
         return Math.floor(Math.random()*255);
     }
@@ -38,9 +35,7 @@
         context.fill();
     }
 
-
     setInterval(function () {
-
         function createMultipleCircle(){
             for(var i = 0; i < 2; i++){
                 createrCircle();
@@ -49,8 +44,6 @@
             height +=3;
         }
         createMultipleCircle();
-
-
     },1000);
 </script>
 </html>
