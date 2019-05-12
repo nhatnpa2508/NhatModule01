@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hình tròn vui nhộn</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid#d3d3d3;"></canvas>
+</body>
+<script>
+    function circle(_width,_height,radius) {
+        this._width = _width;
+        this._height = _height;
+        this.radius = radius;
+        this.speedWidth = 3;
+        this.speedHeight = 3;
+    }
+    function getRandomHex(){
+        return Math.floor(Math.random()*255);
+    }
+
+    function getRandomColor(){
+        let red = getRandomHex();
+        let green = getRandomHex();
+        let blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green +")";
+    }
+    function createrCircle() {
+        let context = document.getElementById("myCanvas").getContext("2d");
+        let radius = Math.floor( Math.random()*80);
+        let color = getRandomColor();
+        let width = Math.random()*window.innerWidth;
+        let height = Math.random()*window.innerHeight;
+        let Circle = new circle(width,height,radius);
+        context.beginPath();
+        context.arc(width,height,radius,0, 2*Math.PI);
+        context.fillStyle = color;
+        context.fill();
+    }
+
+
+    setInterval(function () {
+
+        function createMultipleCircle(){
+            for(var i = 0; i < 2; i++){
+                createrCircle();
+            }
+            width +=3;
+            height +=3;
+        }
+        createMultipleCircle();
+
+
+    },1000);
+</script>
+</html>
