@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng câu chuyện Adam và Eva</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Apple(weight) {
+        this.weight = weight;
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.decreaseWeight = function () {
+            if(this.weight >0)
+            this.weight--;
+        };
+    }
+    function Human(weight) {
+        this.name = name;
+        this.setgender = function () {
+            this.gender = gender;
+        };
+        this.weight = weight;
+        this.setApple = function (apple) {
+            this.apple = apple
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.getGender = function () {
+            return this.gender;
+        };
+        this.eatApple = function () {
+            if (this.apple.getWeight() >0) {
+                this.weight++;
+                this.apple.decreaseWeight();
+            }
+        };
+        this.checkApple = function () {
+           document.write("Apple: " + this.apple.getWeight() + "<br>");
+        };
+    }
+    let apple = new Apple(10);
+    let adam = new Human(70);
+    let eva = new Human(45);
+    adam.setApple(apple);
+    eva.setApple(apple);
+    for (let i = 0; i <6;i++) {
+        adam.eatApple();
+        document.write("Weight of Adam after eat apple= " + adam.getWeight() + "<br>" +
+            "Weight of Aple = " + apple.getWeight() + "<br>");
+        eva.checkApple();
+        eva.eatApple();
+        document.write("Weight of Eva after eat apple= " + eva.getWeight() + "<br>" +
+            "Weight of Aple = " + apple.getWeight() + "<br>");
+        adam.checkApple();
+    }
+</script>
+</html>

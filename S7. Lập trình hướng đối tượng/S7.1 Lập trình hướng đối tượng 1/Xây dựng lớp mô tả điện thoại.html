@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Điện thoại</title>
+</head>
+<body>
+</body>
+<script>
+    let Battery = function(){
+        this.setEnergy = function (energy) {
+            this.energy = energy;
+        };
+        this.getEnergy = function () {
+            return this.energy;
+        };
+        this.decreaseEnergy = function () {
+            if (this.energy > 0)
+                this.energy--;
+        } ;
+        this.chargeEnergy = function () {
+            if (this.energy <100)
+                this.energy +=10;
+        }
+    };
+    let Mobile = function (name) {
+        this.name = name;
+        this.composeMess = "";
+        this.inboxMess = "";
+        this.sentMess = "";
+        this.getname = function () {
+            return this.name;
+        };
+        this.setBattery = function (battery) {
+            this.battery = battery;
+        };
+        this.getBatteryInfo = function () {
+            return this.battery.getEnergy()
+        };
+        this.checkOnOff = function () {
+            if (this.status)
+                alert("Phone is On");
+            else
+                alert("Phone is Off");
+        };
+        this.turnOn = function () {
+            this.status = true;
+            this.battery.decreaseEnergy();
+        };
+        this.turnOff = function () {
+            this.status = false;
+        };
+        this.chargeBatt = function () {
+            this.battery.chargeEnergy()
+        };
+        this.getcomposeMess = function (str) {
+            if (this.turnOn())
+                return this.composeMess;
+            this.battery.decreaseEnergy();
+        };
+        this.setcomposeMess = function (composeMess) {
+            if (this.turnOn())
+                this.composeMess += composeMess;
+            this.battery.decreaseEnergy();
+        };
+        this.getinboxMess = function () {
+            if (this.turnOn())
+                return this.inboxMess;
+            this.battery.decreaseEnergy();
+        };
+        this.setinboxMess = function (inboxMess) {
+            if (this.turnOn())
+            this.inboxMess += inboxMess;
+            this.battery.decreaseEnergy();
+        };
+        this.getsentMess = function () {
+            if (this.turnOn())
+                return this.sentMess;
+            this.battery.decreaseEnergy();
+        };
+        this.setsentMess = function (sentMess) {
+            if (this.turnOn())
+                this.sentMess += sentMess;
+            this.battery.decreaseEnergy();
+        };
+    };
+    let battNokia = new Battery();
+    let battIphone = new Battery();
+    let nokia = new Mobile();
+    nokia.setBattery(battNokia);
+    let iphone = new Mobile();
+    iphone.setBattery(battIphone);
+    document.write("Nokia is a"+typeof nokia + "<br>");
+    document.write("Iphone is a"+ typeof iphone+ "<br>");
+    nokia.checkOnOff();
+    nokia.turnOn();
+    nokia.checkOnOff();
+    document.write( nokia.getBatteryInfo()+ "<br>");
+
+
+
+</script>
+</html>
