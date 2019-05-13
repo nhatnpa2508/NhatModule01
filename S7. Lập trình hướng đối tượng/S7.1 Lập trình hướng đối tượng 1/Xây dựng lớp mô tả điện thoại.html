@@ -3,101 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>Xây dựng lớp mô tả Điện thoại</title>
+    <!-- Pin: check pin, charge pin, decrease pin
+        OnOff: Check on of, turn on, turn off
+        Mess: get Mes, set Mes, write Mes, send Mes, Receive Mes
+            Send mes: Nokia(outbox) -> Iphone (inbox)
+        -->
 </head>
 <body>
 </body>
 <script>
-    let Battery = function(){
-        this.setEnergy = function (energy) {
-            this.energy = energy;
+    function Mobile(){
+        this.name ="";
+        this.battery = 100;
+        this.status = true;
+        this.message = '';
+        this.inboxMes = '';
+        this.outboxMes = '';
+        this.drafMes = '';
+        this.recMes = '';
+
+        this.getbattery = function () {
+            document.write( this.battery + "<br>");
         };
-        this.getEnergy = function () {
-            return this.energy;
+        this.decreaseBatt = function () {
+            if (this.battery >0)
+                this.battery--;
         };
-        this.decreaseEnergy = function () {
-            if (this.energy > 0)
-                this.energy--;
-        } ;
-        this.chargeEnergy = function () {
-            if (this.energy <100)
-                this.energy +=10;
-        }
-    };
-    let Mobile = function (name) {
-        this.name = name;
-        this.composeMess = "";
-        this.inboxMess = "";
-        this.sentMess = "";
-        this.getname = function () {
-            return this.name;
-        };
-        this.setBattery = function (battery) {
-            this.battery = battery;
-        };
-        this.getBatteryInfo = function () {
-            return this.battery.getEnergy()
-        };
-        this.checkOnOff = function () {
-            if (this.status)
-                alert("Phone is On");
-            else
-                alert("Phone is Off");
+        this.charge = function () {
+            if (this.battery <90)
+                this.battery +=10
         };
         this.turnOn = function () {
             this.status = true;
-            this.battery.decreaseEnergy();
+            this.decreaseBatt();
         };
         this.turnOff = function () {
             this.status = false;
         };
-        this.chargeBatt = function () {
-            this.battery.chargeEnergy()
+        this.checkOnOff = function () {
+            if (this.status == true)
+                document.write(" Phone is On" +"<br>");
+            else
+                document.write(" Phone is Off"+"<br>");
+            this.decreaseBatt();
         };
-        this.getcomposeMess = function (str) {
-            if (this.turnOn())
-                return this.composeMess;
-            this.battery.decreaseEnergy();
+        this.getMess = function () {
+            if (this.status == true) {
+                return this.message;
+                this.decreaseBatt();
+            }
         };
-        this.setcomposeMess = function (composeMess) {
-            if (this.turnOn())
-                this.composeMess += composeMess;
-            this.battery.decreaseEnergy();
+        this.setMess = function (message) {
+            if (this.status == true) {
+                this.message += message;
+                this.decreaseBatt();
+            }
         };
-        this.getinboxMess = function () {
-            if (this.turnOn())
-                return this.inboxMess;
-            this.battery.decreaseEnergy();
+
+        this.writeMes = function (mess) {
+            if (this.status == true) {
+                this.message += mess;
+                this.decreaseBatt();
+            }
         };
-        this.setinboxMess = function (inboxMess) {
-            if (this.turnOn())
-            this.inboxMess += inboxMess;
-            this.battery.decreaseEnergy();
+        this.sentMessages = function (name) {
+            if (this.status == true) {
+                name.receiveMess(this.message);
+                this.outboxMes = this.message;
+                this.decreaseBatt();
+            }
         };
-        this.getsentMess = function () {
-            if (this.turnOn())
-                return this.sentMess;
-            this.battery.decreaseEnergy();
+        this.receiveMess = function (mes) {
+            if (this.status == true) {
+                this.recMes += mes;
+                this.inboxMes = this.recMes;
+                this.decreaseBatt();
+            }
         };
-        this.setsentMess = function (sentMess) {
-            if (this.turnOn())
-                this.sentMess += sentMess;
-            this.battery.decreaseEnergy();
+        this.inboxMess = function () {
+            if (this.status == true) {
+                return this.inboxMes;
+                this.decreaseBatt();
+            }
         };
-    };
-    let battNokia = new Battery();
-    let battIphone = new Battery();
+        this.outboxMess = function () {
+            if (this.status == true) {
+                return this.outboxMes;
+                this.decreaseBatt();
+            }
+        }
+    }
     let nokia = new Mobile();
-    nokia.setBattery(battNokia);
+    nokia.checkOnOff();
     let iphone = new Mobile();
-    iphone.setBattery(battIphone);
-    document.write("Nokia is a"+typeof nokia + "<br>");
-    document.write("Iphone is a"+ typeof iphone+ "<br>");
-    nokia.checkOnOff();
-    nokia.turnOn();
-    nokia.checkOnOff();
-    document.write( nokia.getBatteryInfo()+ "<br>");
-
-
-
+    iphone.checkOnOff();
+    nokia.writeMes("Hello Iphone");
+    nokia.sentMessages(iphone);
+    iphone.writeMes("Hi Nokia");
+    iphone.sentMessages(nokia);
+    document.write("Nokia inbox mess: "+ nokia.inboxMess() + "<br>");
+    document.write("Nokia outbox mess: "+nokia.outboxMess() + "<br>");
+    document.write("Iphone inbox mess: "+iphone.inboxMess() + "<br>");
+    document.write("Iphone outbox mess: "+iphone.outboxMess() + "<br>");
+    nokia.getbattery();
+    iphone.getbattery();
 </script>
 </html>

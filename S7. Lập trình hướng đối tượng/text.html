@@ -1,45 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>siêu xe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-<div id="game"></div>
 <script>
-    function Hero(image, top, left, size){
-        this.image = image;
-        this.top = top;
-        this.left = left;
-        this.size = size;
-        this.getHeroElement = function(){
-            return '<img width="'+ this.size + '"' +
-                ' height="'+ this.size + '"' +
-                ' src="' + this.image +'"' +
-                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+    function Mobile(pin) {
+        this.name = '';
+        this.pin = pin;
+        this.messages = '';
+        this.receiveMes = '';
+        this.outBox = '';
+        this.inBox = '';
+        this.getPin = function () {
+            return this.pin;
         }
-        this.moveRight = function(){
-            this.left += 5;
-            console.log('ok: ' + this.left);
+        this.getMessages = function () {
+            return this.messages;
         }
-        this.moveDown = function(){
-            this.top +=5;
+        this.setMessages = function (messages) {
+            this.messages += messages;
         }
-    }
-    var hero = new Hero("lamborghini.jpg", 20, 30, 200);
-    function start(){
-        if(hero.left < window.innerWidth - hero.size){
-            hero.moveRight();
+        this.onPhone = function () {
+            return true;
         }
-        if(hero.left >= window.innerWidth - hero.size){
-            if(hero.top < window.innerHeight - hero.size){
-                hero.moveDown();
+        this.offPhone = function () {
+            return false;
+        }
+        this.statusPhone = function () {
+            if (this.onphone) {
+                return alert('Your phone is on.');
+            }
+            else {
+                return alert('Your phone is off.');
             }
         }
-        document.getElementById('game').innerHTML = hero.getHeroElement();
-        setTimeout(start, 10)
+        this.charging = function () {
+            this.pin = this.pin++;
+        }
+        this.writtingMessages = function (str) {
+            this.messages += str;
+        }
+        this.sentMessages = function (name) {
+            name.receiveMessages(this.messages);
+            this.outBox = this.messages;
+
+        }
+        this.receiveMessages = function (ms) {
+            this.receiveMes += ms;
+            this.inBox = this.receiveMes;
+        }
+        this.checkInbox = function () {
+            return this.inBox;
+        }
+        this.checkOutbox = function () {
+            return this.outBox;
+        }
+        this.erassingPin = function () {
+            return this.pin--;
+        }
     }
-    start();
+    let nokia = new Mobile(50);
+    let iphone = new Mobile(50);
+    console.log(nokia);
+    console.log(iphone);
+    nokia.writtingMessages("Hello Iphone, I'm Nokia");
+    nokia.sentMessages(iphone);
+    nokia.erassingPin();
+    iphone.erassingPin();
+    document.write('pin nokia=' + nokia.getPin() + '<br/>');
+    document.write('pin iphone=' + iphone.getPin() + '<br/>');
+    document.write('Iphone CheckInbox:' + iphone.checkInbox() + '<br/>');
+    document.write('Iphone CheckOutbox:' + iphone.checkOutbox() + '<br/>');
+    document.write('Nokia CheckInbox:' + nokia.checkInbox() + '<br/>');
+    document.write('Nokia CheckOutbox:' + nokia.checkOutbox() + '<br/>');
 </script>
 </body>
+
 </html>
