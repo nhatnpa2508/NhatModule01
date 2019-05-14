@@ -11,58 +11,110 @@
 
     let context = document.getElementById("myCanvas");
     let ctx = context.getContext("2d");
-    let cenWid = context.width/2;
-    console.log(cenWid);
-    let cenHei= context.height/2;
-    console.log(cenHei);
+    let cenWid = context.width / 2;
+    let cenHei = context.height / 2;
     let dx = 5;
     let dy = -5;
     let scoreBall = 0;
+    let rightPressed = false;
+    let leftPressed = false;
+    let paddleHei = 10;
+    let paddleWid = 300;
+    let paddlePosition = (context.width - 300) / 2;
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    function keyDownHandler(evt) {
+        if (evt.keyCode == 39) {
+            rightPressed = true;
+            console.log('ok')
+        } else if (evt.keyCode == 37) {
+            leftPressed = true;
+        }
+    }
+
+    function keyUpHandler(evt) {
+        if (evt.keyCode == 39) {
+            rightPressed = false;
+        } else if (evt.keyCode == 37) {
+            leftPressed = false;
+        }
+    }
+    if (scoreBall >5 &&scoreBall<=10) {
+        dx = 20;
+        dy = -20;
+    }
+    if (scoreBall >10 &&scoreBall<=20) {
+        dx = 40;
+        dy = -40;
+    }
+    if (scoreBall >20 &&scoreBall<=30) {
+        dx = 60;
+        dy = -60;
+    }
 
     function circle() {
-                ctx.beginPath();
-        ctx.arc(cenWid,cenHei,20,0,2*Math.PI);
+        ctx.beginPath();
+        ctx.arc(cenWid, cenHei, 20, 0, 2 * Math.PI);
         ctx.fillStyle = "red";
         ctx.fill();
         ctx.closePath();
-
     }
+
     function paddle() {
         ctx.beginPath();
-        ctx.rect(context.width/2 - 150, context.height - 50, 300, 10);
+        ctx.rect(paddlePosition, context.height - 50, paddleWid, paddleHei);
         ctx.fillStyle = "gray";
         ctx.fill();
         ctx.closePath();
     }
+
     function score() {
         ctx.font = "30px Arial";
-        ctx.fillText("Điểm " + scoreBall.toFixed(0),10,50)
+        ctx.fillText("Điểm " + scoreBall.toFixed(0), 10, 50)
     }
+
     function draw() {
-        ctx.clearRect(0,0,context.width,context.height);
-        circle();
-        paddle();
+        ctx.clearRect(0, 0, context.width, context.height);
         score();
-        if (cenWid +20 + dx > 600){
+        circle();
+
+        if (cenWid + 20 + dx > 600) {
+
             dx = -dx;
         }
-        if (cenWid -20 + dx < 0){
+        if (cenWid - 20 + dx < 0) {
+
             dx = -dx;
         }
 
-        if (cenHei +20 + dy > 500){
-            alert ("Game Over. Click OK to play agian");
-            window.location.reload();
+        if (cenHei + 70 + dy > 500) {
+
+            if (cenWid > paddlePosition && cenWid < paddlePosition + 300)
+                dy = -dy;
+            else if (cenHei + 20 + dy > 500) {
+                alert("Game Over. Click OK to play agian");
+                window.location.reload();
+            }
         }
-        if (cenHei -20 + dy <0){
+
+        if (cenHei - 20 + dy < 0) {
             dy = -dy;
+        }
+        paddle();
+        if (rightPressed && paddlePosition < context.width - paddleWid) {
+            paddlePosition += 10;
+        } else if (leftPressed && paddlePosition > 0) {
+            paddlePosition -= 10;
         }
         cenWid += dx;
         cenHei += dy;
         scoreBall += 0.01;
         window.requestAnimationFrame(draw);
     }
-draw();
+
+    draw();
 
 </script>
 </html>

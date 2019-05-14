@@ -5,14 +5,12 @@
     <title>Di chuyển ảnh bằng bàn phím</title>
 </head>
 <body onload="docReady()">
-<!-- onload="docReady gọi hàm phia duoi-->
 <img id="nobita" src="https://img2.thuthuatphanmem.vn/uploads/2018/12/08/nhung-hinh-anh-ve-nobita_105847092.jpg"
      style="position: absolute; left: 0; top: 0;" height="120" width="100"/>
 <script>
     function docReady() {
         window.addEventListener('keydown', moveSelection);
     }
-    <!-- Xây dựng hàm nhận các phím 37 - trái, 38 - lên, 39 - phải, 40 - xuống-->
     function moveSelection(evt) {
         switch (evt.keyCode) {
             case 37:
@@ -25,7 +23,6 @@
                 dowArrowPressed();break;
         }
     }
-    <!-- Xây dựng hàm thực hiện các công việc di chuyển hình ảnh-->
     function upArrowPressed() {
         var element = document.getElementById("nobita");
         element.style.top = parseInt(element.style.top) - 10 + "px";
