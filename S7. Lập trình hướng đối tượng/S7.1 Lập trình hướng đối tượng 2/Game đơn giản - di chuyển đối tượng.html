@@ -31,11 +31,11 @@
       this.top += speed;
     };
   }
-
-  let hero = new Hero('dog.jpg', 20, 30, 50,50);
+  let speed1 = 50;
+  let hero = new Hero('dog.jpg', 20, 30, 50,speed1);
 
   function start() {
-    let speed = 50;
+
     let widthmax = window.innerWidth - hero.size;
     let heightmax = window.innerHeight - hero.size;
     if (hero.left < widthmax) {

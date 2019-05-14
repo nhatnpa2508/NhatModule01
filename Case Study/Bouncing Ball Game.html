@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boucing Ball Game</title>
+</head>
+<body style="text-align: center">
+<canvas id="myCanvas" width="600px" height="500px" style="border: 1px solid#d3d3d3;"></canvas>
+</body>
+<script>
+
+    let context = document.getElementById("myCanvas");
+    let ctx = context.getContext("2d");
+    let cenWid = context.width/2;
+    console.log(cenWid);
+    let cenHei= context.height/2;
+    console.log(cenHei);
+    let dx = 5;
+    let dy = -5;
+    let scoreBall = 0;
+
+    function circle() {
+                ctx.beginPath();
+        ctx.arc(cenWid,cenHei,20,0,2*Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+
+    }
+    function paddle() {
+        ctx.beginPath();
+        ctx.rect(context.width/2 - 150, context.height - 50, 300, 10);
+        ctx.fillStyle = "gray";
+        ctx.fill();
+        ctx.closePath();
+    }
+    function score() {
+        ctx.font = "30px Arial";
+        ctx.fillText("Điểm " + scoreBall.toFixed(0),10,50)
+    }
+    function draw() {
+        ctx.clearRect(0,0,context.width,context.height);
+        circle();
+        paddle();
+        score();
+        if (cenWid +20 + dx > 600){
+            dx = -dx;
+        }
+        if (cenWid -20 + dx < 0){
+            dx = -dx;
+        }
+
+        if (cenHei +20 + dy > 500){
+            alert ("Game Over. Click OK to play agian");
+            window.location.reload();
+        }
+        if (cenHei -20 + dy <0){
+            dy = -dy;
+        }
+        cenWid += dx;
+        cenHei += dy;
+        scoreBall += 0.01;
+        window.requestAnimationFrame(draw);
+    }
+draw();
+
+</script>
+</html>
