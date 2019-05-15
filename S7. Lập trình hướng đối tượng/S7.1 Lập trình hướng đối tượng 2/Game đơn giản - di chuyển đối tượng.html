@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Objects</title>
-  </head>
-  <body>
-    <div id="game"></div>
-    <script src="script.js"></script>
-  </body>
-</html>
+</head>
+<body>
+<div id="game"></div>
+</body>
 <script>
-  function Hero(image, top, left, size,speed) {
-    this.image = image;
-    this.top = top;
-    this.left = left;
-    this.size = size;
-    this.speed = speed;
+    function Hero(image, top, left, size,speedX, speedY){
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
 
-    this.getHeroElement = function () {
-      return '<img width="' + this.size + '"' +
-              ' height="' + this.size + '"' +
-              ' src="' + this.image + '"' +
-              ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
-    };
+        this.getHeroElement = function(){
+            return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="' + this.image +'"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+        };
 
-    this.moveRight = function () {
-      this.left += speed;
-    };
-    this.moveDown = function () {
-      this.top += speed;
-    };
-  }
-  let speed1 = 50;
-  let hero = new Hero('dog.jpg', 20, 30, 50,speed1);
-
-  function start() {
-
-    let widthmax = window.innerWidth - hero.size;
-    let heightmax = window.innerHeight - hero.size;
-    if (hero.left < widthmax) {
-      hero.moveRight();
-    }
-    if (hero.top < heightmax) {
-      hero.moveDown();
+        this.moveRight = function(){
+            this.left += this.speedX;
+        };
+        this.moveDown = function(){
+            this.top += this.speedY;
+        };
     }
 
-    document.getElementById('game').innerHTML = hero.getHeroElement();
-    setTimeout(start, 100)
-  }
+    let hero = new Hero('dog.jpg', 20, 30, 100,10,10);
 
-  start();
+    function start(){
+        hero.moveRight();
+        hero.moveDown();
+        if(hero.left + hero.speedX > window.innerWidth - hero.size ||
+            hero.left + hero.speedX < 0){
+            hero.speedX = -hero.speedX;
+        }
+        if(hero.top + hero.speedY> window.innerHeight - hero.size ||
+            hero.top + hero.speedY < 0){
+            hero.speedY = -hero.speedY;
+        }
+        document.getElementById('game').innerHTML= hero.getHeroElement();
+        setTimeout(start, 50)
+    }
+
+    start();
 </script>
+</html>

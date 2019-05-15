@@ -20,13 +20,21 @@
         let tienganh = ["one","two","three","four","five","six","seven","eight",'nine',"ten"];
         let tiengviet =["một","hai","ba","bốn","năm","sáu","bảy","tám","chín","mười"];
         let j;
-
+        let count = 0;
         for (j = 0; j < tienganh.length; j++) {
-            if (tracuu == tienganh[j]) {
-                document.getElementById("dich").innerHTML = tiengviet[j];
-                break;
-            } else {
-                document.getElementById("dich").innerHTML = "Không có trong từ điền";
+            if (tracuu === tienganh[j]) {
+                count++;
+            }
+            if (count>0) {
+                for (j = 0; j < tienganh.length; j++) {
+                    if (tracuu === tienganh[j]) {
+                        document.getElementById("dich").innerHTML = tiengviet[j];
+                        break;
+                    }
+                }
+            }
+            else {
+                document.getElementById("dich").innerHTML = "Không có trong từ điển";
             }
         }
     }

@@ -17,10 +17,11 @@
         this.battery = 100;
         this.status = true;
         this.message = '';
-        this.inboxMes = '';
-        this.outboxMes = '';
+        this.inboxMes = [];
+        this.outboxMes = [];
         this.drafMes = '';
         this.recMes = '';
+        let i = j = 0;
 
         this.getbattery = function () {
             document.write( this.battery + "<br>");
@@ -41,53 +42,55 @@
             this.status = false;
         };
         this.checkOnOff = function () {
-            if (this.status == true)
+            if (this.status)
                 document.write(" Phone is On" +"<br>");
             else
                 document.write(" Phone is Off"+"<br>");
             this.decreaseBatt();
         };
         this.getMess = function () {
-            if (this.status == true) {
+            if (this.status) {
                 return this.message;
                 this.decreaseBatt();
             }
         };
         this.setMess = function (message) {
-            if (this.status == true) {
+            if (this.status) {
                 this.message += message;
                 this.decreaseBatt();
             }
         };
 
         this.writeMes = function (mess) {
-            if (this.status == true) {
-                this.message += mess;
+            if (this.status) {
+                this.message = mess;
                 this.decreaseBatt();
             }
         };
         this.sentMessages = function (name) {
-            if (this.status == true) {
+            if (this.status) {
                 name.receiveMess(this.message);
-                this.outboxMes = this.message;
+                this.outboxMes[j] = this.message;
+                j++;
                 this.decreaseBatt();
             }
         };
         this.receiveMess = function (mes) {
-            if (this.status == true) {
-                this.recMes += mes;
-                this.inboxMes = this.recMes;
+            if (this.status) {
+                this.recMes = mes;
+                this.inboxMes[i] = this.recMes;
+                i++;
                 this.decreaseBatt();
             }
         };
         this.inboxMess = function () {
-            if (this.status == true) {
+            if (this.status) {
                 return this.inboxMes;
                 this.decreaseBatt();
             }
         };
         this.outboxMess = function () {
-            if (this.status == true) {
+            if (this.status) {
                 return this.outboxMes;
                 this.decreaseBatt();
             }
@@ -99,7 +102,11 @@
     iphone.checkOnOff();
     nokia.writeMes("Hello Iphone");
     nokia.sentMessages(iphone);
+    nokia.writeMes("How are you");
+    nokia.sentMessages(iphone);
     iphone.writeMes("Hi Nokia");
+    iphone.sentMessages(nokia);
+    iphone.writeMes("I am fine");
     iphone.sentMessages(nokia);
     document.write("Nokia inbox mess: "+ nokia.inboxMess() + "<br>");
     document.write("Nokia outbox mess: "+nokia.outboxMess() + "<br>");

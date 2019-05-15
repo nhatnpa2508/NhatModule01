@@ -5,47 +5,56 @@
     <title>Hình tròn vui nhộn</title>
 </head>
 <body>
-<canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid#d3d3d3;"></canvas>
+<canvas id="myCanvas" width="1350px" height="600px" style="border: 1px solid#d3d3d3;"></canvas>
 </body>
 <script>
-    let circle = function(_width,_height,radius) {
+    let circle = function (_width, _height, radius) {
         this._width = _width;
         this._height = _height;
         this.radius = radius;
     };
 
-    function getRandomHex(){
-        return Math.floor(Math.random()*255);
+    let context = document.getElementById("myCanvas");
+    let ctx = context.getContext("2d");
+
+    function getRandomHex() {
+        return Math.floor(Math.random() * 255);
     }
 
-    function getRandomColor(){
+    function getRandomColor() {
         let red = getRandomHex();
         let green = getRandomHex();
         let blue = getRandomHex();
-        return "rgb(" + red + "," + blue + "," + green +")";
-    }
-    function createrCircle() {
-        let context = document.getElementById("myCanvas").getContext("2d");
-        let radius = Math.floor( Math.random()*80);
-        let color = getRandomColor();
-        let width = Math.random()*window.innerWidth;
-        let height = Math.random()*window.innerHeight;
-        let Circle = new circle(width,height,radius);
-        context.beginPath();
-        context.arc(width,height,radius,0, 2*Math.PI);
-        context.fillStyle = color;
-        context.fill();
+        return "rgb(" + red + "," + blue + "," + green + ")";
     }
 
-    setInterval(function () {
-        function createMultipleCircle(){
-            for(var i = 0; i < 2; i++){
-                createrCircle();
-            }
-            width +=3;
-            height +=3;
+    function createrCircle() {
+        let radius = Math.floor(Math.random() * 30);
+        let color = getRandomColor();
+        let width = Math.random() * 1350;
+        let height = Math.random() * 600;
+        let Circle = new circle(width, height, radius);
+        ctx.beginPath();
+        ctx.arc(width, height, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, 1350, 600);
+        for (let i = 0; i < 30; i++) {
+            createrCircle();
         }
-        createMultipleCircle();
-    },1000);
+        setInterval(function () {
+            function createMultipleCircle(){
+                for(let i = 0; i < 2; i++){
+                    createrCircle();
+                }
+            }
+            createMultipleCircle();
+        },1000);
+    }
+    draw();
+
 </script>
 </html>
