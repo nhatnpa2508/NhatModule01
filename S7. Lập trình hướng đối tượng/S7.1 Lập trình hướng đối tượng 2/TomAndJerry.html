@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng quá trình mèo bắt chuột</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Mouse(name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.say = " Chít chít. Lêu lêu mèo <br>";
+        this.status = true;
+        this.getWeight = function () {
+            return this.weight
+        };
+        this.checkWeight = function () {
+            if (this.status)
+                return document.write(this.name + this.weight + "<br>");
+            else return document.write(this.name + this.weight + " đã chết <br>")
+        };
+        this.getSpeed = function () {
+            if (this.weight > 0)
+                return this.speed
+        };
+        this.alive = function () {
+            this.status = true;
+            return document.write(this.name + this.say+"<br>");
+        };
+        this.checkDie = function () {
+            this.status = false;
+            this.weight = 0;
+
+        };
+        this.checkAlive = function () {
+            if (this.status)
+                document.write(this.name + " Chít chít chít. Lêu lêu lêu con mèo<br>");
+            else
+                document.write(this.name + " Chết chết, éc éc<br>");
+        };
+    }
+
+    function Cat(name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.say = " Mày chờ đó chuột <br>";
+        this.status = true;
+
+        this.getWeight = function () {
+            return document.write(this.name + this.weight + "<br>");
+        };
+        this.setMouse = function (mouse) {
+            this.mouse = mouse;
+        };
+        this.getSpeed = function () {
+            return this.speed;
+        };
+        this.catchMouse = function () {
+            if (this.speed> this.mouse.speed)
+                return document.write(this.name + " bắt được " + this.mouse.name + "<br>");
+            else
+                return document.write(this.name + " không bắt được " + this.mouse.name + "<br>");
+        };
+        this.eat = function () {
+            if (this.speed > this.mouse.getSpeed() && this.mouse.status && this.status) {
+                this.weight = this.weight + this.mouse.getWeight();
+                this.mouse.checkDie();
+            }
+        };
+        this.alive = function () {
+            this.status = true;
+            return this.name + this.say;
+        };
+        this.sleep = function () {
+            this.status = false;
+            return this.name + " Khò khò<br>";
+        };
+        this.checkSleep = function () {
+            if (this.status)
+                document.write(this.name + this.say);
+            else
+                document.write(this.name + " Khò khò<br>");
+        };
+    }
+
+    let tom = new Cat('Tom', 15, 40);
+    let jerry = new Mouse('Jerry', 3, 35);
+    tom.setMouse(jerry);
+    tom.checkSleep();
+    tom.getWeight();
+    jerry.checkAlive();
+    jerry.checkWeight();
+    jerry.alive();
+    tom.checkSleep();
+    tom.catchMouse();
+    tom.eat();
+    tom.getWeight();
+    jerry.checkAlive();
+    jerry.checkWeight();
+
+
+</script>
+</html>
