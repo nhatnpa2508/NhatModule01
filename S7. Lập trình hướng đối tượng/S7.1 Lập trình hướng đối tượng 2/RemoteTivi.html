@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote và Tivi</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Remote(idRemote) {
+        this.idRemote = idRemote;
+        this.getId = function () {
+            return idRemote;
+        };
+        this.setTivi = function (tivi) {
+            this.tivi = tivi;
+        };
+        this.turnOnTivi = function () {
+            if (this.tivi.status === false)
+                return this.tivi.turnOn();
+        };
+        this.turnOffTivi = function () {
+            if (this.tivi.status)
+                return this.tivi.turnOff();
+        };
+        this.changeVolUp = function () {
+            this.tivi.volumeUp();
+        };
+        this.changeVolDown = function () {
+            this.tivi.volumeDown();
+        };
+        this.changeChanel = function () {
+            this.tivi.getChanel();
+        };
+        this.setChanel = function (i) {
+            this.tivi.i = i;
+        };
+        this.getVolumeTivi =function () {
+            this.tivi.getVolume();
+        }
+    }
+
+    function Tivi(name, volume) {
+        this.name = name;
+        this.volume = volume;
+        this.status = false;
+        this.i = 1;
+        this.chanel = ['Thời tiết: Huế 40 độ', 'Phim: Bao Công',
+            'Chương trình nấu ăn', 'Thể thao: bóng đá', 'Thế giới động vật',
+            'Chương trình ca nhạc', 'Phim Hoạt hình'];
+        this.turnOn = function () {
+            this.status = true;
+            document.write(this.chanel[this.i - 1] + '<br>');
+        };
+        this.turnOff = function () {
+            this.status = false;
+            document.write("Tivi is Off<br>");
+        };
+        this.volumeUp = function () {
+            if (this.volume < 100 &&this.status) {
+                this.volume++;
+                document.write( this.volume+ '<br>');
+            }
+            else
+                document.write("Volume is max" + this.volume+'<br>');
+        };
+        this.volumeDown = function () {
+            if (this.volume > 0 &&this.status) {
+                this.volume--;
+                document.write(this.volume+'<br>');
+            }
+            else
+                document.write("Volume is min" + this.volume+'<br>');
+        };
+        /*        this.setChanel = function () {
+                    this.i = i ;
+                };*/
+        this.getChanel = function () {
+            /*            this.i = i ;*/
+            if (this.status)
+            document.write( this.chanel[this.i-1] +'<br>');
+        };
+        this.getVolume = function () {
+            if (this.status)
+            document.write( this.volume+'<br>');
+        }
+    }
+    let sony = new Tivi('Sony',20);
+    let remote = new Remote('Rm-Sn');
+    remote.setTivi(sony);
+    remote.turnOnTivi();
+    remote.turnOffTivi();
+    remote.turnOnTivi();
+    remote.getVolumeTivi();
+    remote.changeVolUp();
+    remote.changeVolUp();
+    remote.changeVolUp();
+    remote.changeVolDown();
+    remote.setChanel(7);
+    remote.changeChanel();
+    remote.setChanel(3);
+    remote.changeChanel();
+    remote.turnOffTivi();
+
+</script>
+</html>
