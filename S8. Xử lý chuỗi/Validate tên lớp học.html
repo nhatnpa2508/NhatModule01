@@ -7,7 +7,7 @@
 <body>
 <script>
     function checkClassName(str) {
-        regexp = /^[ACP]{1,1}[0-9]{1,4}[GHIKLM]{1,1}$/;
+        regexp = /^[ACP]{1,1}[0-9]{4,4}[GHIKLM]{1,1}$/;
         if (regexp.test(str))
             document.write(str + " Tên lớp hợp lệ<br>");
         else

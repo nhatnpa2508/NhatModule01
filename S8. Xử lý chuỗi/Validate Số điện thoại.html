@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate Số điện thoại</title>
+</head>
+<body>
+<script>
+    function checkPhoneNumber(str) {
+        regexp = /^[(]{1,1}[0-9]{1,2}[)]{1,1}-[(]{1,1}[0-9]{9,9}[)]$/;
+        if (regexp.test(str))
+            document.write(str + " is a phone number <br>");
+        else
+            document.write(str + " is not a phone number <br>")
+    }
+    let string1 = "(84)-(978489438)";
+    let string2 = "(a4)-(978489438)";
+    let string3 = "(8a)-(978489438)";
+    let string4 = "(84)-(a78489438)";
+    let string5 = "(84a-(978489438)";
+    let string6 = "(84)-978489438)";
+    let string7 = "(84)-(97848943)";
+    let string8 = "(84)-(9784894333)";
+    let string9 = "(84)-(97848943a3)";
+    let string10 = "(84)-(978489433";
+
+    checkPhoneNumber(string1);
+    checkPhoneNumber(string2);
+    checkPhoneNumber(string3);
+    checkPhoneNumber(string4);
+    checkPhoneNumber(string5);
+    checkPhoneNumber(string6);
+    checkPhoneNumber(string7);
+    checkPhoneNumber(string8);
+    checkPhoneNumber(string9);
+    checkPhoneNumber(string10);
+</script>
+</body>
+</html>
