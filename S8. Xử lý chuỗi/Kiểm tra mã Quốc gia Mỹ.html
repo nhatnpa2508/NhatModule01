@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function is_upZipCode(str) {
+        regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+        if (regexp.test(str)){
+            return true;
+        }
+        return false;
+    }
+    let zipcode = "03201 - 2150";
+    document.write(zipcode + is_upZipCode(zipcode) + "<br>");
+    zipcode = "7892";
+    document.write(zipcode + is_upZipCode(zipcode)+ "<br>");
+    let zipcode1 = "03201-2150";
+    document.write(zipcode1 + is_upZipCode(zipcode1)+ "<br>");
+    let zipcode2 = "0321-21501";
+    document.write(zipcode2 + is_upZipCode(zipcode2)+ "<br>");
+    let zipcode3 = "03201 -2150";
+    document.write(zipcode3 + is_upZipCode(zipcode3)+ "<br>");
+    let zipcode4 = "0321- 21501";
+    document.write(zipcode4 + is_upZipCode(zipcode4)+ "<br>");
+
+</script>
+</body>
+</html>
