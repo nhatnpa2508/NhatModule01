@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate Account</title>
+</head>
+<body>
+<script>
+    function checkValidateAccount(str) {
+        regexp = /^[_a-z0-9]{6,}$/;
+        if (regexp.test(str))
+            document.write(str+ " hợp lệ <br>")
+        else document.write(str + " không hợp lệ <br>")
+    }
+    let string1 = "123abc_";
+    let string2 = "_abc123";
+    let string3 = "_______";
+    let string4 = "123456";
+    let string5 = "abcdegf";
+
+    let string11 = ".@";
+    let string21 = "12345";
+    let string31 = "1234_";
+    let string41 = "____";
+    let string51 = "_123456.";
+
+    checkValidateAccount(string1);
+    checkValidateAccount(string2);
+    checkValidateAccount(string3);
+    checkValidateAccount(string4);
+    checkValidateAccount(string5);
+
+    checkValidateAccount(string11);
+    checkValidateAccount(string21);
+    checkValidateAccount(string31);
+    checkValidateAccount(string41);
+    checkValidateAccount(string51);
+
+
+</script>
+</body>
+</html>
