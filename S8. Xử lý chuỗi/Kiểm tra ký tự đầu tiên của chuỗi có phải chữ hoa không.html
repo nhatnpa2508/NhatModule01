@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra ký tự đầu tiên có phải chữ hoa không</title>
+</head>
+<body>
+<script>
+    function isFirstLetterUpperCase(str) {
+        regex  =/^[A-Z]/;
+        if (regex.test(str)) {
+            document.write(str + " String is first character is uppercase <br>")
+        }
+        else {
+            document.write(str + " String is first character is not uppercase<br>")
+        }
+    }
+    isFirstLetterUpperCase("Abcd");
+    isFirstLetterUpperCase("abcd");
+    let string1 = new String('Nguyen van nam');
+    let string2 = "NGUYEN VAN NAM";
+    let string3 = 'nguyen van Nam';
+    isFirstLetterUpperCase(string1);
+    isFirstLetterUpperCase(string2);
+    isFirstLetterUpperCase(string3);
+</script>
+</body>
+</html>
