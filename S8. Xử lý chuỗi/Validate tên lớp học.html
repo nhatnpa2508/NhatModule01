@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate tên lớp học</title>
+</head>
+<body>
+<script>
+    function checkClassName(str) {
+        regexp = /^[ACP]{1,1}[0-9]{1,4}[GHIKLM]{1,1}$/;
+        if (regexp.test(str))
+            document.write(str + " Tên lớp hợp lệ<br>");
+        else
+            document.write(str + " Tên lớp không hợp lệ<br>");
+    }
+    let string1 = "C0318G";
+    let string2 = "M0318G";
+    let string3 = "P0323A";
+    let string4 = "C0318GH";
+    let string5 = "C03118G";
+    let string6 = "A0311H";
+    let string7 = "AAA0311G";
+
+    checkClassName(string1);
+    checkClassName(string2);
+    checkClassName(string3);
+    checkClassName(string4);
+    checkClassName(string5);
+    checkClassName(string6);
+    checkClassName(string7);
+</script>
+</body>
+</html>
