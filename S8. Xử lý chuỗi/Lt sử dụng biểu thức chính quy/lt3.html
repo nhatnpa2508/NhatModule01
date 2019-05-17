@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số nguyên âm và phụ âm</title>
+</head>
+<body>
+<form>
+    <fieldset style="width: 400px; height: 300px">
+        <legend><b>ĐẾM SỐ NGUYÊN ÂM VÀ PHỤ ÂM TRONG 1 CHUỖI</b></legend>
+        Nhập chuỗi: <input type="text" placeholder="Nhập 1 chuỗi" id="string">
+        <input type="button" onclick="check()" value="Kiểm tra">
+        <div id="result"></div>
+    </fieldset>
+</form>
+<script>
+    function countWords(str) {
+        str = str.trim();
+        let i = str.length;
+        let countVowel = 0;
+        let countConsonant = 0;
+        for (let j = 0; j < i; j++) {
+            if (str.charAt(j) !== " ") {
+                if (str.charAt(j) == "a" || str.charAt(j) == "e" || str.charAt(j) == "o" || str.charAt(j) == "i" || str.charAt(j) == "u")
+                    countConsonant++;
+                else
+                    countVowel++
+            }
+        }
+        return document.getElementById("result").innerHTML =("Số nguyên âm = " + countVowel + "<br> Số phụ âm = " + countConsonant);
+
+    }
+
+    function check() {
+        let string = document.getElementById("string").value;
+        countWords(string);
+    }
+
+</script>
+</body>
+</html>

@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Check dd/mm/yyyy</title>
 </head>
 <body>
+<script>
+    function checkDate(str) {
+        regexp = /^[0-3][0-9][/][0-1][0-9][/][0-9]{4}/;
+        if (regexp.test(str))
+            document.write(str + " đúng dạng dd/mm/yyyy <br>");
+        else
+            document.write(str + " không đúng dạng dd/mm/yyyy<br>");
+    }
+    let string1 = "25/08/1993";
+    let string2 = "1/1/1993";
+    let string3 = "3/23/2019";
+    let string4 = "40/33/2019";
+    let string5 = "29/12/2019";
+    let string6 = "40/33/20191";
+    let string7 = "01/12/2019";
+    let string8 = "01/33/2019";
+    let string9 = "4a/3a/2019";
+    let string10 = "09/12/201a";
 
+    checkDate(string1);
+    checkDate(string2);
+    checkDate(string3);
+    checkDate(string4);
+    checkDate(string5);
+    checkDate(string6);
+    checkDate(string7);
+    checkDate(string8);
+    checkDate(string9);
+    checkDate(string10);
+</script>
 </body>
 </html>
