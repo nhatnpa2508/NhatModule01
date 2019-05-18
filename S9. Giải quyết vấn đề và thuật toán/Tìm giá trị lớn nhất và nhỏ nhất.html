@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị lớn nhất và nhỏ nhất</title>
+</head>
+<body>
+<form>
+    <fieldset style="height: 400px; width: 400px">
+        <legend>Tìm giá trị lớn nhất và nhỏ nhất</legend>
+        <input type="button" value="Giá trị lớn nhất" onclick="maxNum()">
+        <input type="button" value="Giá trị nhỏ nhất" onclick="minNum()">
+        <div id="screen"></div>
+        <div id="result"></div>
+    </fieldset>
+</form>
+<script>
+    let nums = [];
+    for (let i = 0; i < 100; i++) {
+        nums[i] = Math.floor(Math.random() * 101);
+    }
+    let screen = "";
+    for (let i = 0; i < nums.length; i++) {
+        screen += nums[i] + " ";
+        if (i % 10 == 9)
+            screen += "<br>"
+    }
+    document.getElementById("screen").innerHTML = screen;
+
+    function maxNum() {
+        let max = nums[0];
+        for (let i = 0; i < nums.length; i++) {
+            if (max < nums[i])
+                max = nums[i]
+        }
+        document.getElementById("result").innerHTML ="Giá trị lớn nhất = "+ max;
+    }
+
+    function minNum() {
+        let min = nums[0];
+        for (let i = 0; i < nums.length; i++) {
+            if (min > nums[i])
+                min = nums[i]
+        }
+        document.getElementById("result").innerHTML = "Giá trị nhỏ nhất ="+ min;
+    }
+</script>
+</body>
+</html>
