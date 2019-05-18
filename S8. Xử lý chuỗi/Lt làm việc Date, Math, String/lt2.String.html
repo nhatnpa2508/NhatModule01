@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập đối tượng String</title>
+</head>
+<body>
+
+<form>
+    <fieldset style="width: 400px; height: 100px">
+        <legend>Đếm số lần xuất hiện chữ a trong chuỗi</legend>
+        <div id="string"></div>
+        <input type="button" onclick="calculate()" value="Đếm">
+        <div id="result"></div>
+    </fieldset>
+    <fieldset style="width: 400px; height: 100px">
+        <legend>Tách chuỗi</legend>
+        <div id="string1"></div>
+        <input type="button" onclick="split()" value="Tách">
+        <input type="button" onclick="count()" value="Đếm">
+        <input type="button" onclick="change()" value="Thay thế Javascript = Typescript">
+        <div id="result1"></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    let str = "Tôi yêu ngôn ngữ lập trình Javascript";
+    document.getElementById("string").innerHTML = str;
+    function calculate() {
+        let count = 0;
+        let a = "a";
+        for (let i = 1; i < str.length; i++) {
+            if (str.charAt(i) == a)
+                count++;
+        }
+        if (count == 0)
+            document.getElementById("result").innerHTML = "Không chứa ký tự a";
+        else
+            document.getElementById("result").innerHTML = "Số ký tự 'a' trong chuỗi = " + count;
+    }
+</script>
+<script>
+    let str1 = "Tôi yêu ngôn ngữ lập trình Javascript";
+    document.getElementById("string1").innerHTML = str1;
+    let arr = [];
+    let newStr = " ";
+    str1.trim();
+    str1 = str1 + newStr;
+    let i = 0;
+    let h;
+    let k = 0;
+    console.log(k);
+    for (h=0; h< str1.length;h++) {
+        if ( k <str1.length - 1) {
+            k = parseInt(str1.indexOf(" ", i));
+            arr[h] = str1.substring(i, k);
+            i = k +1;
+        }
+    }
+    function split() {
+
+        document.getElementById("result1").innerHTML = arr;
+    }
+    function count() {
+
+        document.getElementById("result1").innerHTML = arr.length;
+    }
+    function change() {
+        let newArr = arr;
+        newArr[6] = "Typescript";
+        newArr =newArr.join(" ");
+        document.getElementById("result1").innerHTML = newArr;
+    }
+
+
+</script>
+</html>

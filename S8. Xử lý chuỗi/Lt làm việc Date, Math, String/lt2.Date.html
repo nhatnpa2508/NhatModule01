@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Làm việc với Date</title>
+</head>
+<body>
+<form>
+    <fieldset style="width: 400px; height: 300px">
+        <legend><b>LÀM VIỆC VỚI DATE()</b></legend>
+        Ngày sinh: <div id="birthday"></div>
+        <input type="button" onclick="checkYear()" value="Kiểm tra tuổi theo năm">
+        <input type="button" onclick="checkMonth()" value="Kiểm tra tuổi theo tháng">
+        <input type="button" onclick="checkDay()" value="Kiểm tra tuổi theo ngày">
+        <input type="button" onclick="checkHours()" value="Kiểm tra tuổi theo giờ">
+        <input type="button" onclick="checkMinutes()" value="Kiểm tra tuổi theo phút">
+        <input type="button" onclick="checkSeconds()" value="Kiểm tra tuổi theo giây">
+
+        <div id="result"></div>
+    </fieldset>
+</form>
+<script>
+    let current = new Date();
+    let birthday = new Date(1993,8,25,17,5,0);
+    document.getElementById("birthday").innerHTML = birthday;
+    let timeOfMe = current.getTime() - birthday.getTime();
+    console.log(timeOfMe);
+    function checkYear() {
+        let _year = current.getFullYear() - birthday.getFullYear();
+        document.getElementById("result").innerHTML = ("Sống được "+ _year + " tuổi rồi");
+    }
+    function checkMonth() {
+        let _month = Math.round(timeOfMe/1000/60/60/24/30);
+        document.getElementById("result").innerHTML = ("Sống được "+ _month + " tháng rồi");
+    }
+    function checkDay() {
+        let _day = Math.round(timeOfMe/1000/60/60/24);
+        document.getElementById("result").innerHTML = ("Sống được "+ _day + " ngày rồi");
+    }
+    function checkHours() {
+        let _hours = Math.round(timeOfMe/1000/60/60);
+        document.getElementById("result").innerHTML = ("Sống được "+ _hours + " giờ rồi");
+    }
+    function checkMinutes() {
+        let _minutes = Math.round(timeOfMe/1000/60);
+        document.getElementById("result").innerHTML = ("Sống được "+ _minutes + " phút rồi");
+    }
+    function checkSeconds() {
+        let _seconds = Math.round(timeOfMe/1000);
+        document.getElementById("result").innerHTML = ("Sống được "+ _seconds + " giây rồi");
+    }
+
+</script>
+</body>
+</html>

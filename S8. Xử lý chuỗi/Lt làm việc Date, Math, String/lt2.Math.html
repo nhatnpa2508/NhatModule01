@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập với Math</title>
+</head>
+<body>
+<form>
+    <fieldset style="width: 400px; height: 100px">
+        <legend>Sinh số ngẫu nhiên</legend>
+        <input type="button" onclick="from0to10()" value="Sinh số random từ 0 - 10">
+        <input type="button" onclick="from0to400()" value="Sinh số random từ 0 - 400">
+        <input type="button" onclick="from50to100()" value="Sinh số random từ 50 - 100">
+        <div id="result"></div>
+    </fieldset>
+</form>
+<form>
+    <fieldset style="width: 400px; height: 100px">
+        <legend>Tìm số nhỏ nhất</legend>
+        Số nhỏ nhất trong các số 5,7,2,9
+        <input type="button" onclick="minOfNum()" value="Số nhỏ nhất">
+        <div id="result2"></div>
+    </fieldset>
+</form>
+<form>
+    <fieldset style="width: 400px; height: 100px">
+        <legend>Tìm lũy thừa một số</legend>
+        Nhập 1 số: <input type="text" placeholder="Nhập 1 số" id="exponential">
+        <input type="button" onclick="find()" value="Tìm lũy thừa">
+        <div id="result3"></div>
+    </fieldset>
+</form>
+<form>
+    <fieldset style="width: 400px; height: 100px">
+        <legend>Tính diện tích hình tròn</legend>
+        Nhập bán kính (cm): <input type="text" placeholder="Nhập bán kính" id="radius">
+        <input type="button" onclick="calculate()" value="Tính diện tích">
+        <div id="result4"></div>
+    </fieldset>
+</form>
+
+<script>
+    function from0to10() {
+        let num = Math.random() * 11;
+        document.getElementById("result").innerHTML = parseInt(num);
+    }
+
+    function from0to400() {
+        let num = Math.random() * 401;
+        document.getElementById("result").innerHTML = parseInt(num);
+    }
+
+    function from50to100() {
+        let num = Math.random() * 51 + 50;
+        document.getElementById("result").innerHTML = parseInt(num);
+    }
+
+    function minOfNum() {
+        let min = Math.min(5, 7, 2, 9);
+        document.getElementById("result2").innerHTML = parseInt(min);
+    }
+</script>
+<script>
+    function calculate() {
+        let _radius = document.getElementById("radius").value;
+        if (isNaN(_radius))
+            document.getElementById("result4").innerHTML = "Số nhập sai";
+        else {
+            let area = Math.pow(_radius, 2) * Math.PI;
+            document.getElementById("result4").innerHTML = "Area = " + area.toFixed(2) + " cm<sup>2</sup>";
+        }
+    }
+</script>
+</body>
+</html>
