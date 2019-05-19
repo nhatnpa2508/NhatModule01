@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đoán số</title>
+</head>
+<body>
+<br><br>
+<h2>Đoán số trong khoảng 1 - 100</h2>
+<input type="button" value="Chơi" onclick="playGame()" id="playGame">
+<input type="button" value="Xuất hiện" onclick="appear()"><br>
+Nhập số bạn đoán: <input type="text" placeholder="Nhập 1 số" id="num">
+<input type="button" value="Đoán" onclick="guess()"><br>
+<div id="screen"></div>
+<div id="result"></div>
+</body>
+<script>
+    let count = 0;
+    let num = 0;
+
+    function playGame() {
+        count = 5;
+        num = Math.floor(Math.random() * 101);
+        console.log(count, num);
+        document.getElementById("screen").innerHTML = "<a>Số lượt đoán còn lại: " + count + "</a>";
+    }
+
+    function appear() {
+        document.getElementById("screen").innerHTML = "<a style='color: lightgrey'>Số phải đoán: " + num + "</a><br><a>Số lượt đoán còn lại: " + count + "</a>";
+        console.log(count, num);
+    }
+
+    function guess() {
+        let numberGuess = document.getElementById("num").value;
+        if (count >0) {
+            if (!isNaN(numberGuess) && numberGuess >= 0 && numberGuess <= 100) {
+                if (numberGuess < num) {
+                    document.getElementById("result").innerHTML = "Số bạn đoán thấp hơn rồi";
+                    count--;
+                    appear();
+                } else if (numberGuess > num) {
+                    document.getElementById("result").innerHTML = "Số bạn đoán cao hơn rồi";
+                    count--;
+                    appear();
+                } else {
+                    count = 0;
+                    document.getElementById("result").innerHTML = "Bạn đã đoán đúng rồi. Click 'Chơi' to play again ";
+                }
+            } else
+                document.getElementById("result").innerHTML = "Bạn nhập không đúng trong khoảng 1 - 100";
+            document.getElementById("num").value = "";
+        }else {
+            document.getElementById("result").innerHTML = "Game đã kết thúc. Click 'Chơi' to play again";
+            document.getElementById("num").value = "";
+        }
+    }
+</script>
+</html>
