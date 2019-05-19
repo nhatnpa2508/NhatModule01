@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số lần xuất hiện của phần tử</title>
+</head>
+<body>
+<br><br>
+<h2>Đếm số lần xuất hiện của phần tử</h2>
+<input type="button" value="Xuất hiện" onclick="appear()"><br>
+Nhập số cần đếm: <input type="text" placeholder="Nhập 1 số" id="num">
+<input type="button" value="Đếm" onclick="countNum()"><br>
+<div id="screen"></div>
+<div id="result"></div>
+</body>
+<script>
+    let arr = [];
+
+    function appear() {
+        for (let i = 0; i < 100; i++) {
+            arr[i] = Math.floor(Math.random() * 101);
+        }
+        function compare(a, b) {
+            return a - b;
+        }
+        arr.sort(compare);
+        
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] += " ";
+            if (i % 10 == 9)
+                arr[i] += "<br>"
+        }
+        document.getElementById("screen").innerHTML = arr.join("");
+    }
+
+    function countNum() {
+        let number = parseInt(document.getElementById("num").value);
+        console.log(number);
+        let count = 0;
+        if (!isNaN(number)) {
+            for (let i = 0; i < arr.length; i++) {
+                if (number == arr[i])
+                    count++;
+            }
+            document.getElementById("result").innerHTML = "Số lần xuất hiện của " + number + " = " + count;
+        } else
+            document.getElementById("result").innerHTML = "Nhập lại số";
+    }
+</script>
+</html>
