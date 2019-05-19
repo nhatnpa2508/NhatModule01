@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game lái xe</title>
+</head>
+<img id="dog" src="dog.jpg" alt="dog" width="1" height="1">
+<img id="brick" src="brick.jpg" alt="brick" width="1" height="1">
+<img id="poop" src="poop.jpg" alt="poop" width="1" height="1">
+<body onkeydown="draw(event)" onload="draw(),docReady()" style="text-align: center">
+<canvas id="gameCanvas" width="1350px" height="500px" style="border: solid 3px #000"></canvas>
+</body>
+<script>
+    let context = document.getElementById("gameCanvas");
+    let ctx = context.getContext("2d");
+    let imgDog = document.getElementById("dog");
+    let imgPoop = document.getElementById("poop");
+    let imgBrick = document.getElementById("brick");
+    let cenWid = 0;
+    let cenHei = context.height / 2;
+    let dx = 0.01;
+    let dy = -0.01;
+    let rightPressed = false;
+    let leftPressed = false;
+    let upPressed = false;
+    let downPressed = false;
+    let control = false;
+    let soccer = 0;
+    let x = Math.random() * context.weight - 25;
+    let y = Math.random() * context.height - 25;
+
+
+    function docReady() {
+        window.addEventListener('keydown', moveSelection);
+    }
+    function moveSelection(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                leftPressed();
+                break;
+            case 39:
+                rightPressed();
+                break;
+            case 38:
+                upPressed();
+                break;
+            case 40:
+                downPressed();
+                break;
+        }
+        if (evt.keyCode == 17)
+            control = true;
+    }
+    function rightPressed() {
+        cenWid += dx;
+    }
+
+    function leftPressed() {
+        cenWid -= dx;
+    }
+
+    function upPressed() {
+        cenHei += dy;
+    }
+
+    function downPressed() {
+        cenHei -= dy;
+    }
+    function upPoop() {
+        ctx.drawImage(imgPoop, 300, 200, 30, 30);
+        ctx.drawImage(imgPoop, 600, 200, 30, 30);
+        ctx.drawImage(imgPoop, 900, 200, 30, 30);
+        ctx.drawImage(imgPoop, 1200, 200, 30, 30);
+    }
+
+    function upBrick() {
+        ctx.drawImage(imgBrick, cenWid, cenHei - 25, 50, 50);
+    }
+
+    function upDog() {
+        ctx.drawImage(imgDog, cenWid, cenHei - 25, 50, 50);
+    }
+
+    function score() {
+        ctx.font = "30px Arial";
+        ctx.fillText("Điểm " + soccer.toFixed(0), 10, 50);
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, context.width, context.height);
+        upDog();
+        score();
+        upPoop();
+
+        if (rightPressed === false || rightPressed === true)
+            cenWid += dx;
+        if (control && rightPressed)
+            cenWid += 0.1 + dx;
+        if (control && upPressed) {
+            cenHei -= 0.1 + dy;
+        }
+        if (control && downPressed) {
+            cenHei += 0.1 + dy;
+            cenWid += 0.1 + dx;
+        }
+
+
+
+        if (cenWid > context.width - 50)
+            cenWid = 0;
+        if (cenHei > context.height)
+            cenHei = 0;
+        if (cenHei < 0)
+            cenHei = context.height;
+        soccer = 0;
+        setInterval(draw, 1);
+    }
+    window.requestAnimationFrame(draw);
+    draw()
+
+
+</script>
+</html>
