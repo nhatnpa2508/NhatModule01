@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Debug Demo</title>
+    </head>
+   <body> 
+       <form name="screen">
+            Số đầu tiên:<br/>
+            <input name="num1" type="text"/><br/>
+            Số thứ hai: <br/>
+            <input name="num2" type="text"/><br/>
+            <div id="resultDiv"></div>
+            <input type="button" value="Tính tích" onclick="product()"/>
+       </form>
+      <script>
+         function product(){
+             let a = parseInt(document.forms['screen']['num1'].value);
+             let b = parseInt(document.forms['screen']['num2'].value);
+             let result = a * b;
+            document.getElementById("resultDiv").innerHTML = "Kết quả: " +a+ " * " +b +  " = " +result;
+             document.forms['screen']['num1'].value = "";
+             document.forms['screen']['num2'].value = "";
+         }
+      </script>   
+   </body>
+<html>
