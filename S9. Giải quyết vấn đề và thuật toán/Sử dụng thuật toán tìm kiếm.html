@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm các SĐT thuộc nhà mạng Viettel</title>
+</head>
+<body onload="printArr()">
+<h3>Danh sách các đầu số nhà mạng Viettel</h3>
+086 - 096 - 097 - 098 - 032 - 033 - 034 - 035 - 036 - 037 - 038 - 039
+<div id="result"></div>
+<input type="button" value="Kiểm tra sđt nhà mạng Viettel" onclick="checkPhoneNum()"><br>
+Nhập số điện thoại muốn thêm vào: <input type="text" id="phoneNum"><input type="button" value="Thêm" onclick="inputPhoneNum()">
+</body>
+<script>
+    let arr = ['097-1345678','099-1345678','091-1345678','086-1345678','087-1345678',
+        '031-1345678','032-1345678','039-a135678','09a-1345678','035-1345678'];
+    let str = "";
+    function printArr() {
+        for(let i = 0; i<arr.length;i++) {
+            str += arr[i] + "<br>";
+        }
+        document.getElementById("result").innerHTML = str;
+    }
+    function checkVietTel(phoneNum) {
+        ergexp1 = /^[0][8][6][-][0-9]{7}$/;
+        ergexp2 = /^[0][9][6-8][-][0-9]{7}$/;
+        ergexp3 = /^[0][3][2-9][-][0-9]{7}$/;
+
+        ergexp4 = /^[0][8][0-57-9][-][0-9]{7}$/;
+        ergexp5 = /^[0][9][1-69][-][0-9]{7}$/;
+        ergexp6 = /^[0][3][1][-][0-9]{7}$/;
+        ergexp7 = /^[0][7][1-9][-][0-9]{7}$/;
+
+        if (ergexp1.test(phoneNum) ||ergexp2.test(phoneNum)||ergexp3.test(phoneNum))
+            return " là số Viettel";
+        else if (ergexp4.test(phoneNum) ||ergexp5.test(phoneNum)||ergexp6.test(phoneNum)||ergexp7.test(phoneNum))
+            return " là số hãng khác";
+        else
+            return " không phải số điện thoại";
+    }
+    function checkPhoneNum() {
+        str = "";
+        for (let i = 0; i < arr.length;i++){
+            str += arr[i] + checkVietTel(arr[i]) + "<br>";
+        }
+        document.getElementById("result").innerHTML = str;
+    }
+    function inputPhoneNum() {
+        let phoneNum = document.getElementById("phoneNum").value;
+        arr[arr.length] = phoneNum;
+        str="";
+        printArr();
+    }
+</script>
+</html>
