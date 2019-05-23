@@ -66,12 +66,15 @@
         document.getElementById("result1").innerHTML = arr.length;
     }
     function change() {
-        let newArr = arr;
+        let newArr = [];
+        for (i = 0; i < arr.length;i++){
+            newArr[i] = arr[i]
+        }
         newArr[6] = "Typescript";
         newArr =newArr.join(" ");
         document.getElementById("result1").innerHTML = newArr;
+        console.log(arr);
     }
-
 
 </script>
 </html>

@@ -26,20 +26,17 @@
     document.addEventListener("keyup", keyUpHandler, false);
 
     function keyDownHandler(evt) {
-        if (evt.keyCode == 39) {
+        if (evt.keyCode == 39)
             rightPressed = true;
-            console.log('ok')
-        } else if (evt.keyCode == 37) {
+        else if (evt.keyCode == 37)
             leftPressed = true;
-        }
     }
 
     function keyUpHandler(evt) {
-        if (evt.keyCode == 39) {
+        if (evt.keyCode == 39)
             rightPressed = false;
-        } else if (evt.keyCode == 37) {
+        else if (evt.keyCode == 37)
             leftPressed = false;
-        }
     }
 
     function circle() {
@@ -91,11 +88,10 @@
             dy = -dy;
         }
         paddle();
-        if (rightPressed && paddlePosition < context.width - paddleWid) {
+        if (rightPressed && paddlePosition < context.width - paddleWid)
             paddlePosition += 10;
-        } else if (leftPressed && paddlePosition > 0) {
+        else if (leftPressed && paddlePosition > 0)
             paddlePosition -= 10;
-        }
         cenWid += dx;
         cenHei += dy;
         scoreBall += 0.01;

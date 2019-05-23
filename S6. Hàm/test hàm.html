@@ -1,139 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Good-Fast-Cheap</title>
+    <title></title>
     <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 160px;
-            height: 34px;
-            margin: 10px;
+        html,
+        body {
+
+            height: 100%;
+            margin: 0;
         }
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
+
+        body {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-        input:checked+.good {
-            background-color: rgb(31, 240, 255);
-        }
-        input:checked+.cheap {
-            background-color: rgb(21, 158, 16);
-        }
-        input:checked+.fast {
-            background-color: rgb(24, 10, 10);
-        }
-        input:checked+.slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(126px);
-        }
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-        .slider.round:before {
-            border-radius: 50%;
-        }
-        span p {
-            display: inline-block;
+
+        canvas {
+            background: rgb(183, 200, 243);
+            border: 2px solid #e01919f5;
         }
     </style>
 </head>
 
 <body>
+<div>
+    <div>
+        <h2 style="color:rgb(172, 25, 230)"> TOP ĐIỂM:<span id="topdiem"></span></h2>
+    </div>
 
-<label class="switch">
-    <input type="checkbox" id="g" onclick=switchGood() >
-    <span class="slider round good"></span>
-</label>
-<span>
-        <p><b>Good</b></p>
-    </span>
-<br />
-<label class="switch">
-    <input type="checkbox" id="c" onclick=switchCheap()>
-    <span class="slider round cheap"></span>
-</label>
-<span>
-        <p><b>Cheap</b></p>
-    </span>
-<br />
-<label class="switch">
-    <input type="checkbox" id="f" onclick=switchFast()>
-    <span class="slider round fast"></span>
-</label>
-<span>
-        <p><b>Fast</b></p>
-    </span>
-<script>
-    function switchGood() {
-        var isGood = document.getElementById("g").checked;
-        var isCheap = document.getElementById("c").checked;
-        var isFast = document.getElementById("f").checked;
-        console.log(isGood,isCheap,isFast);
-        if (isCheap && isFast) {
-            if (Math.random() < 0.5) {
-                document.getElementById("c").checked = false;
-            } else {
-                document.getElementById("f").checked = false;
-            }
+    <div>
+        <h3>Socer: <span id="score"></span></h3>
+    </div>
+    <div>
+        <canvas width="400" height="400" id="game"></canvas>
+        <!-- <div id="top"></div> -->
+    </div>
+    <script>
+
+        var topdiem = 0;
+        var diem = 0;
+        //Ở đây ta tạo ra bộ khung chứa game
+        var canvas = document.getElementById('game');
+        var context = canvas.getContext('2d');
+        var grid = 16;
+        // khởi tạo đối tượng rắn là 1 ô vuông
+        var snake = {
+            x: 160, //vị trí của snake theo hướng x,y
+            y: 160,
+            dx: grid,
+            dy: 0,
+            cells: [],
+            maxCells: 4,
+            diem: 0
+        };
+
+        var count = 0;
+        var apple = {
+            x: 320,
+            y: 320
+        };
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
         }
-    }
-    function switchCheap() {
-        var isGood = document.getElementById("g").checked;
-        var isCheap = document.getElementById("c").checked;
-        var isFast = document.getElementById("f").checked;
-        console.log(isGood,isCheap,isFast);
-        if (isGood && isFast) {
-            if (Math.random() < 0.5) {
-                document.getElementById("g").checked = false
-            } else {
-                document.getElementById("f").checked = false
+
+        // game loop
+        function loop() {
+            //hàm này giống như setTimeout, sẽ gọi lại hàm loop khi loop thực thi xong
+            requestAnimationFrame(loop);
+
+            // vòng lặp trò chơi chậm đến 15 khung hình / giây thay vì 60 - 60/15 = 4
+            if (++count < 10) {
+                return;
             }
-        }
-    }
-    function switchFast() {
-        var isGood = document.getElementById("g").checked;
-        var isCheap = document.getElementById("c").checked;
-        var isFast = document.getElementById("f").checked;
-        console.log(isGood,isCheap,isFast);
-        if (isGood && isCheap) {
-            if (Math.random() < 0.5) {
-                document.getElementById("c").checked = false
-            } else {
-                document.getElementById("f").checked = false
+            count = 0;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            snake.x += snake.dx; // mỗi loop rắn sẽ di chuyển thêm 1dx đơn vị
+            snake.y += snake.dy;
+            // khi snake đụng tường sẽ chạy lại từ edge đối diện
+            if (snake.x < 0) {
+                snake.x = canvas.width - grid;
             }
+            else if (snake.x >= canvas.width) {
+                snake.x = 0;
+            }
+            if (snake.y < 0) {
+                snake.y = canvas.height - grid;
+            }
+            else if (snake.y >= canvas.height) {
+                snake.y = 0;
+            }
+
+            snake.cells.unshift({ x: snake.x, y: snake.y });
+
+            if (snake.cells.length > snake.maxCells) {
+                snake.cells.pop();
+            }
+
+            context.fillStyle = 'red';
+            context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+
+            context.fillStyle = 'green';
+            snake.cells.forEach(function (cell, index) {
+                context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+
+                // Rắn ăn táo
+
+                if (cell.x === apple.x && cell.y === apple.y) {
+
+                    snake.maxCells++;
+                    diem = diem + 10;
+                    apple.x = getRandomInt(0, 25) * grid;
+                    apple.y = getRandomInt(0, 25) * grid;
+                    //tính điểm
+
+                    document.getElementById("score").innerHTML = diem;
+
+                    // topdiem.push(diem);
+                    // document.getElementById("top").innerHTML = topdiem.sort();
+                }
+                function myFunction() {
+                    // top.push(diem);
+                    for (var i = index + 1; i < snake.cells.length; i++) {
+                        if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                            // top.push(diem);
+                            return top;
+
+                        }
+                    }
+                }
+
+                // document.getElementById("top").innerHTML = topdiem.sort();
+
+                // check va chạm khi rắn đụng đuôi
+                for (var i = index + 1; i < snake.cells.length; i++) {
+
+                    // va chạm thì reset game
+                    if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                        snake.x = 160;
+                        snake.y = 160;
+                        snake.cells = [];
+                        snake.maxCells = 4;
+                        snake.dx = grid;
+                        snake.dy = 0;
+                        apple.x = getRandomInt(0, 25) * grid;
+                        apple.y = getRandomInt(0, 25) * grid;
+                        // lưu và lấy điểm lớn nhất.
+                        if (Number(localStorage.getItem("topdiem")) < diem) {
+                            if (typeof (Storage) !== "undefined") {
+                                localStorage.setItem("topdiem", diem);
+
+                            }
+                        }
+                        alert('OVER số điểm của bạn là:' + ' ' + diem);
+                        location.reload();
+
+                    }
+
+                }
+            });
         }
-    }
-</script>
+        document.addEventListener('keydown', function (e) {
+            if (e.which === 37 && snake.dx === 0) {
+                snake.dx = -grid;
+                snake.dy = 0;
+            }
+            else if (e.which === 38 && snake.dy === 0) {
+                snake.dy = -grid;
+                snake.dx = 0;
+            }
+            else if (e.which === 39 && snake.dx === 0) {
+                snake.dx = grid;
+                snake.dy = 0;
+            }
+            else if (e.which === 40 && snake.dy === 0) {
+                snake.dy = grid;
+                snake.dx = 0;
+            }
+        });
+        requestAnimationFrame(loop);
+        requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // requestAnimationFrame(loop);
+        // document.getElementById("demo").innerHTML = diem;
+        // document.getElementById("top").innerHTML = topdiem.push(diem);
+
+
+        document.getElementById("topdiem").innerHTML = localStorage.getItem("topdiem");
+
+    </script>
 </body>
 
 </html>
