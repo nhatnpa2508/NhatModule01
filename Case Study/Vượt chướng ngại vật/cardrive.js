@@ -23,18 +23,30 @@ lose.src = "sound/boom.mp3";
 let rightPressed = false;
 let leftPressed = false;
 let controlPressed = false;
-let carX = 220;
-const carY = 528;
-const DISTANCE = 200;
-const RIGHT = 39;
-const LEFT = 37;
-const CONTROL = 17;
 let constant;
 let point = 0;
 let topScore =0;
 let brick = [];
 brick[0] = {x: 0, y: 0};
 let coin = {x: 350, y: 0};
+let carX = 220;
+const CARY = 528;
+const CARWIDTH = 60;
+const CARHEIGHT = 100;
+const ROADSIZEWIDTH = 100;
+const DISTANCE = 200;
+const DISTANCEHEIGHT = 300;
+const BRICKWIDTH = 250;
+const BRICKHEIGHT = 50;
+const COINWIDTH = COINHEIGHT = 30;
+const SPEEDMIN = 5;
+const SPEEDMAX = 10;
+const PIXELS = 20;
+const STARTINGPOINT = -350;
+const PLUSPOINT = 500;
+const RIGHT = 39;
+const LEFT = 37;
+const CONTROL = 17;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -57,79 +69,80 @@ function keyUpHandler(evt) {
         controlPressed = false;
 }
 
+function screen() {
+    ctx.drawImage(road, 0, 0, context.width, context.height);
+    ctx.drawImage(car, carX, CARY, CARWIDTH, CARHEIGHT);
+}
+
 function draw() {
-    //SCREEN
-    ctx.drawImage(road, 0, 0, 500, 678);
+    screen();
     //CAR
-    ctx.drawImage(car, carX, carY, 60, 100);
-    if (rightPressed && carX <= context.width - 160)
-        carX += 5;
-    else if (leftPressed && carX >= 100)
-        carX -= 5;
+    if (rightPressed && carX <= context.width - ROADSIZEWIDTH - CARWIDTH)
+        carX += SPEEDMIN;
+    else if (leftPressed && carX >= ROADSIZEWIDTH)
+        carX -= SPEEDMIN;
 
-    if (controlPressed && rightPressed && carX <= context.width - 160)
-        carX += 10;
-    else if (controlPressed && leftPressed && carX >= 100)
-        carX -= 10;
-
+    if (controlPressed && rightPressed && carX <= context.width - ROADSIZEWIDTH - CARWIDTH)
+        carX += SPEEDMAX;
+    else if (controlPressed && leftPressed && carX >= ROADSIZEWIDTH)
+        carX -= SPEEDMAX;
     //COIN
-    ctx.drawImage(coinGod, coin.x, coin.y, 30, 30);
+    ctx.drawImage(coinGod, coin.x, coin.y, COINWIDTH, COINHEIGHT);
 
     if (controlPressed)
-        coin.y += 10;
+        coin.y += SPEEDMAX;
     else
-        coin.y += 5;
+        coin.y += SPEEDMIN;
     // PHÁT HIỆN VA CHẠM COIN
-    if ((528 <= coin.y + 30) && (628 >= coin.y) &&
-        (carX + 60 > coin.x) && (carX < coin.x + 30)) {
+    if ((CARY <= coin.y + COINHEIGHT) && (CARY+CARHEIGHT >= coin.y) &&
+        (carX + CARWIDTH > coin.x) && (carX < coin.x + COINWIDTH)) {
         point++;
         score.play();
-        coin = {x: Math.floor(Math.random() * 300) + 100, y: -350}
+        coin = {x: Math.floor(Math.random() * context.width - ROADSIZEWIDTH - COINWIDTH - ROADSIZEWIDTH ) + ROADSIZEWIDTH, y: STARTINGPOINT}
     }
     // TRƯỜNG HỢP XẢY RA LỖI COIN
-    if (coin.y > 678) {
-        coin = {x: Math.floor(Math.random() * 300) + 100, y: -350}
+    if (coin.y > context.height) {
+        coin = {x: Math.floor(Math.random() * context.width - ROADSIZEWIDTH - COINWIDTH- ROADSIZEWIDTH ) + ROADSIZEWIDTH, y: STARTINGPOINT}
     }
     //BRICK
     for (let i = 0; i < brick.length; i++) {
-        ctx.drawImage(brick1, brick[i].x, brick[i].y, 250, 50);
+        ctx.drawImage(brick1, brick[i].x, brick[i].y, BRICKWIDTH, BRICKHEIGHT);
         constant = brick1.width + DISTANCE;
-        ctx.drawImage(brick2, brick[i].x + constant, brick[i].y, 250, 50);
+        ctx.drawImage(brick2, brick[i].x + constant, brick[i].y, BRICKWIDTH, BRICKHEIGHT);
 
         if (controlPressed)
-            brick[i].y += 10;
+            brick[i].y += SPEEDMAX;
         else
-            brick[i].y += 5;
+            brick[i].y += SPEEDMIN;
 
-        if (brick[i].y === 300) {
-            brick.push({x: Math.floor(Math.random() * brick1.width) - brick1.width, y: -100});
+        if (brick[i].y === DISTANCEHEIGHT) {
+            brick.push({x: Math.floor(Math.random() * brick1.width) - brick1.width, y: - BRICKHEIGHT});
         }
-        if (brick[i].y === 500) {
+        if (brick[i].y === PLUSPOINT) {
             point++;
         }
         //PHÁT HIỆN VA CHẠM BRICK
-        if ((528 <= brick[i].y + brick1.height) && (608 >= brick[i].y)
-            && ((carX + 20 <= brick[i].x + brick1.width) ||
-                (carX + car.width - 20 >= brick[i].x + constant))) {
+        if ((CARY <= brick[i].y + brick1.height) && (CARY + CARHEIGHT>= brick[i].y + PIXELS)
+            && ((carX + PIXELS <= brick[i].x + brick1.width) ||
+                (carX + car.width >= brick[i].x + constant +PIXELS))) {
             lose.play();
             alert("Game Over");
             location.reload();
         }
         // TRƯỜNG HỢP XẢY RA LỖI BRICK
-        if (brick[brick.length - 1].y > 678) {
-            brick.push({x: Math.floor(Math.random() * brick1.width) - brick1.width, y: -100});
+        if (brick[brick.length - 1].y > context.height) {
+            brick.push({x: Math.floor(Math.random() * brick1.width) - brick1.width, y: - BRICKHEIGHT});
         }
     }
     //ROADSIZE
-    ctx.drawImage(roadsizeLeft, 400, 0, 100, 678);
-    ctx.drawImage(roadsizeRight, 0, 0, 100, 678);
+    ctx.drawImage(roadsizeLeft, context.width - ROADSIZEWIDTH , 0, ROADSIZEWIDTH, context.height);
+    ctx.drawImage(roadsizeRight, 0, 0, ROADSIZEWIDTH, context.height);
     //SCORE
     ctx.fillText("Score : " + point, 5, context.height - 20);
     ctx.font = "18px Verdana";
     ctx.fillStyle = "white";
     //ANIMATION DRAW
     requestAnimationFrame(draw);
-
 }
 //UPDATE DRAW AFTER 10 SECONDS
-setInterval(draw, 10000);
+setInterval(draw, 20000);
