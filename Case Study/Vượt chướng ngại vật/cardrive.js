@@ -25,25 +25,26 @@ let leftPressed = false;
 let controlPressed = false;
 let constant;
 let point = 0;
-let topScore =0;
 let brick = [];
 brick[0] = {x: 0, y: 0};
 let coin = {x: 350, y: 0};
 let carX = 220;
-const CARY = 528;
-const CARWIDTH = 60;
-const CARHEIGHT = 100;
-const ROADSIZEWIDTH = 100;
+const CAR_Y = 528;
+const CAR_WIDTH = 60;
+const CAR_HEIGHT = 100;
+const ROADSIZE_WIDTH = 100;
 const DISTANCE = 200;
-const DISTANCEHEIGHT = 300;
-const BRICKWIDTH = 250;
-const BRICKHEIGHT = 50;
-const COINWIDTH = COINHEIGHT = 30;
-const SPEEDMIN = 5;
-const SPEEDMAX = 10;
+const DISTANCE_HEIGHT = 300;
+const BRICK_WIDTH = 250;
+const BRICK_HEIGHT = 50;
+const COIN_WIDTH = COIN_HEIGHT = 30;
+const SPEED_MIN = 5;
+const SPEED_MAX = 10;
 const PIXELS = 20;
-const STARTINGPOINT = -350;
-const PLUSPOINT = 500;
+const STARTING_POINT = -350;
+const PLUS_POINT = 500;
+const SCORE_TOP = context.height - 20;
+const SCORE_LEFT = 5;
 const RIGHT = 39;
 const LEFT = 37;
 const CONTROL = 17;
@@ -71,78 +72,85 @@ function keyUpHandler(evt) {
 
 function screen() {
     ctx.drawImage(road, 0, 0, context.width, context.height);
-    ctx.drawImage(car, carX, CARY, CARWIDTH, CARHEIGHT);
+    ctx.drawImage(car, carX, CAR_Y, CAR_WIDTH, CAR_HEIGHT);
 }
 
 function draw() {
     screen();
     //CAR
-    if (rightPressed && carX <= context.width - ROADSIZEWIDTH - CARWIDTH)
-        carX += SPEEDMIN;
-    else if (leftPressed && carX >= ROADSIZEWIDTH)
-        carX -= SPEEDMIN;
+    if (rightPressed && carX <= context.width - ROADSIZE_WIDTH - CAR_WIDTH)
+        carX += SPEED_MIN;
+    else if (leftPressed && carX >= ROADSIZE_WIDTH)
+        carX -= SPEED_MIN;
 
-    if (controlPressed && rightPressed && carX <= context.width - ROADSIZEWIDTH - CARWIDTH)
-        carX += SPEEDMAX;
-    else if (controlPressed && leftPressed && carX >= ROADSIZEWIDTH)
-        carX -= SPEEDMAX;
+    if (controlPressed && rightPressed && carX <= context.width - ROADSIZE_WIDTH - CAR_WIDTH)
+        carX += SPEED_MAX;
+    else if (controlPressed && leftPressed && carX >= ROADSIZE_WIDTH)
+        carX -= SPEED_MAX;
     //COIN
-    ctx.drawImage(coinGod, coin.x, coin.y, COINWIDTH, COINHEIGHT);
+    ctx.drawImage(coinGod, coin.x, coin.y, COIN_WIDTH, COIN_HEIGHT);
 
     if (controlPressed)
-        coin.y += SPEEDMAX;
+        coin.y += SPEED_MAX;
     else
-        coin.y += SPEEDMIN;
+        coin.y += SPEED_MIN;
     // PHÁT HIỆN VA CHẠM COIN
-    if ((CARY <= coin.y + COINHEIGHT) && (CARY+CARHEIGHT >= coin.y) &&
-        (carX + CARWIDTH > coin.x) && (carX < coin.x + COINWIDTH)) {
+    if ((CAR_Y <= coin.y + COIN_HEIGHT) && (CAR_Y + CAR_HEIGHT >= coin.y) &&
+        (carX + CAR_WIDTH > coin.x) && (carX < coin.x + COIN_WIDTH)) {
         point++;
         score.play();
-        coin = {x: Math.floor(Math.random() * context.width - ROADSIZEWIDTH - COINWIDTH - ROADSIZEWIDTH ) + ROADSIZEWIDTH, y: STARTINGPOINT}
+        coin = {
+            x: Math.floor(Math.random() * context.width - ROADSIZE_WIDTH - COIN_WIDTH - ROADSIZE_WIDTH) + ROADSIZE_WIDTH,
+            y: STARTING_POINT
+        }
     }
     // TRƯỜNG HỢP XẢY RA LỖI COIN
     if (coin.y > context.height) {
-        coin = {x: Math.floor(Math.random() * context.width - ROADSIZEWIDTH - COINWIDTH- ROADSIZEWIDTH ) + ROADSIZEWIDTH, y: STARTINGPOINT}
+        coin = {
+            x: Math.floor(Math.random() * context.width - ROADSIZE_WIDTH - COIN_WIDTH - ROADSIZE_WIDTH) + ROADSIZE_WIDTH,
+            y: STARTING_POINT
+        }
     }
     //BRICK
     for (let i = 0; i < brick.length; i++) {
-        ctx.drawImage(brick1, brick[i].x, brick[i].y, BRICKWIDTH, BRICKHEIGHT);
-        constant = brick1.width + DISTANCE;
-        ctx.drawImage(brick2, brick[i].x + constant, brick[i].y, BRICKWIDTH, BRICKHEIGHT);
+        ctx.drawImage(brick1, brick[i].x, brick[i].y, BRICK_WIDTH, BRICK_HEIGHT);
+        constant = BRICK_WIDTH + DISTANCE;
+        ctx.drawImage(brick2, brick[i].x + constant, brick[i].y, BRICK_WIDTH, BRICK_HEIGHT);
 
         if (controlPressed)
-            brick[i].y += SPEEDMAX;
+            brick[i].y += SPEED_MAX;
         else
-            brick[i].y += SPEEDMIN;
+            brick[i].y += SPEED_MIN;
 
-        if (brick[i].y === DISTANCEHEIGHT) {
-            brick.push({x: Math.floor(Math.random() * brick1.width) - brick1.width, y: - BRICKHEIGHT});
+        if (brick[i].y === DISTANCE_HEIGHT) {
+            brick.push({x: Math.floor(Math.random() * BRICK_WIDTH) - BRICK_WIDTH, y: -BRICK_HEIGHT});
         }
-        if (brick[i].y === PLUSPOINT) {
+        if (brick[i].y === PLUS_POINT) {
             point++;
         }
         //PHÁT HIỆN VA CHẠM BRICK
-        if ((CARY <= brick[i].y + brick1.height) && (CARY + CARHEIGHT>= brick[i].y + PIXELS)
-            && ((carX + PIXELS <= brick[i].x + brick1.width) ||
-                (carX + car.width >= brick[i].x + constant +PIXELS))) {
+        if ((CAR_Y <= brick[i].y + BRICK_HEIGHT) && (CAR_Y + CAR_HEIGHT >= brick[i].y + PIXELS)
+            && ((carX + PIXELS <= brick[i].x + BRICK_WIDTH) ||
+                (carX + CAR_WIDTH >= brick[i].x + constant + PIXELS))) {
             lose.play();
             alert("Game Over");
             location.reload();
         }
         // TRƯỜNG HỢP XẢY RA LỖI BRICK
         if (brick[brick.length - 1].y > context.height) {
-            brick.push({x: Math.floor(Math.random() * brick1.width) - brick1.width, y: - BRICKHEIGHT});
+            brick.push({x: Math.floor(Math.random() * BRICK_WIDTH) - BRICK_WIDTH, y: -BRICK_HEIGHT});
         }
     }
     //ROADSIZE
-    ctx.drawImage(roadsizeLeft, context.width - ROADSIZEWIDTH , 0, ROADSIZEWIDTH, context.height);
-    ctx.drawImage(roadsizeRight, 0, 0, ROADSIZEWIDTH, context.height);
+    ctx.drawImage(roadsizeLeft, context.width - ROADSIZE_WIDTH, 0, ROADSIZE_WIDTH, context.height);
+    ctx.drawImage(roadsizeRight, 0, 0, ROADSIZE_WIDTH, context.height);
     //SCORE
-    ctx.fillText("Score : " + point, 5, context.height - 20);
+    ctx.fillText("Score : " + point, SCORE_LEFT, SCORE_TOP);
     ctx.font = "18px Verdana";
     ctx.fillStyle = "white";
     //ANIMATION DRAW
     requestAnimationFrame(draw);
 }
+
 //UPDATE DRAW AFTER 10 SECONDS
 setInterval(draw, 20000);
