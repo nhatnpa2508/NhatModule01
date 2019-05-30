@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thử form + fieldset</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Thông tin cá nhân</legend>;
+        Họ và tên: <br>;
+        <input type="text" id="hoten">;<br>
+        Địa chỉ: <br>;
+        <input type="text" id="diachi">;<br>
+        Ngày tháng năm sinh: <br>;
+        <input type="date" id="ngay">;<br>
+        <input type="button" value="Thông tin" onclick="tt()">;<br>
+        <div id="thongtin"></div>;
+    </fieldset>
+</form>
+<script>
+    function tt() {
+        var x = document.getElementById("hoten").text;
+        var y = document.getElementById("diachi").text;
+        var z = document.getElementById("ngay").date;
+        var t = x + "sinh ngày" + z + "trú tại"+ y;
+        document.getElementById("thongtin").innerHTML = t;
+    }
+</script>
+</body>
+</html>

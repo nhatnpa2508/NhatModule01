@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2: Viết hàm nhận 1 mảng và số nguyên index, trả về mảng ban đầu đã được loại bỏ phần tử tại vị trí index
+        nếu index hợp lệ. Nếu index không hợp lệ trả về mảng ban đầu</title>
+</head>
+<body>
+
+</body>
+<script>
+    function tryRemoveFromArray(arr, index) {
+        let newArr = [];
+        if (arr.length > 0) {
+            if (index >= 0 && index < arr.length) {
+                for (let i = 0; i < arr.length; i++) {
+                    if (i !== index) {
+                        newArr.push(arr[i]);
+                    }
+                }
+                console.log(newArr);
+            } else
+                console.log("Index không hợp lệ. Mảng ban đầu: " + arr);
+        } else
+            console.log("Mảng không hợp lệ");
+    }
+
+    let arr1 = [12, 6, 3, 7, 21, 5, 7];
+    let arr2 = [];
+    tryRemoveFromArray(arr1, 2);
+    tryRemoveFromArray(arr1, 0);
+    tryRemoveFromArray(arr1, 7);
+    tryRemoveFromArray(arr1, -2);
+    tryRemoveFromArray(arr2, 0);
+</script>
+</html>

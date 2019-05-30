@@ -79,8 +79,9 @@
             if (cenWid > paddlePosition && cenWid < paddlePosition + 300)
                 dy = -dy;
             else if (cenHei + 20 + dy > 500) {
+                cancelAnimationFrame(draw());
+                location.reload();
                 alert("Game Over. Click OK to play agian");
-                window.location.reload();
             }
         }
 
@@ -95,7 +96,7 @@
         cenWid += dx;
         cenHei += dy;
         scoreBall += 0.01;
-        window.requestAnimationFrame(draw);
+        requestAnimationFrame(draw);
     }
 
     draw();

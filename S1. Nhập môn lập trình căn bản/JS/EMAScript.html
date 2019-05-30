@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc if - else</title>
+</head>
+<body>
+Tên thường gọi khác của Javascript là gì?
+<input type="text" id="a1">;<br>
+<input type="button" value="Xem kết quả" onclick="a2()" "><br>
+<div id="a3"></div>
+
+<script>
+    function a2() {
+
+
+    var a = document.getElementById("a1").innerText;
+    if (a == 'ECMAScript'){
+       document.getElementById("a3").innerHTML = "Đúng";
+    }else {
+        document.getElementById("a3").innerHTML = "Sai, ECMAScript";
+    }
+    }
+</script>
+</body>
+</html>

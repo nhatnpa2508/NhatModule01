@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải quyết năm nhuận</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Bài tập năm nhuận</legend>
+        Nhập vào năm: <input type="text" id="n"> <br>
+        <input type="button" value="Kiểm tra" onclick="nam()">
+        <div id="k"></div>
+    </fieldset>
+</form>
+<script>
+    function nam() {
+        var year = document.getElementById("n").value;
+        y1 = parseInt(year)%4==0;
+        y2 = parseInt(year)%100==0;
+        y3 = parseInt(year)%400==0;
+        if (y1){
+            if (y2) {
+                document.getElementById("k").innerHTML = "năm không nhuận";
+                if (y3) {
+                    document.getElementById("k").innerHTML = "năm nhuận";
+                }
+            } else {
+                    document.getElementById("k").innerHTML = "năm nhuận";
+            }
+        }else {document.getElementById("k").innerHTML = "năm không nhuận";}
+    }
+</script>
+</body>
+</html>

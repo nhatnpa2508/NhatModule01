@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>What Can JavaScript Do?</h2>
+<p id="demo">JavaScript can change HTML content.</p>
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+<form method="POST" action="index.js">
+    <p>Họ: <input name="first_name"></p>
+    <p>Tên: <input name="last_name"></p>
+    <p>
+        <button type="button">Nút bấm thường</button>
+        <button type="submit">Nút bấm gửi</button>
+        <button type="reset">Nút bấm đặt lại</button>
+    </p>
+</form>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<body>
+<h2>What Can JavaScript Do?</h2>
+<p>JavaScript can change HTML attributes.</p>
+<p>In this case JavaScript changes the src (source) attribute of an image.</p>
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+</body>
+</html>

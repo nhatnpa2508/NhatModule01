@@ -1,210 +1,37 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <style>
-        html,
-        body {
-
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        canvas {
-            background: rgb(183, 200, 243);
-            border: 2px solid #e01919f5;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-
 <body>
-<div>
-    <div>
-        <h2 style="color:rgb(172, 25, 230)"> TOP ĐIỂM:<span id="topdiem"></span></h2>
-    </div>
+<canvas id="myCanvas" style="width: 400px; height:300px"></canvas>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
 
-    <div>
-        <h3>Socer: <span id="score"></span></h3>
-    </div>
-    <div>
-        <canvas width="400" height="400" id="game"></canvas>
-        <!-- <div id="top"></div> -->
-    </div>
-    <script>
-
-        var topdiem = 0;
-        var diem = 0;
-        //Ở đây ta tạo ra bộ khung chứa game
-        var canvas = document.getElementById('game');
-        var context = canvas.getContext('2d');
-        var grid = 16;
-        // khởi tạo đối tượng rắn là 1 ô vuông
-        var snake = {
-            x: 160, //vị trí của snake theo hướng x,y
-            y: 160,
-            dx: grid,
-            dy: 0,
-            cells: [],
-            maxCells: 4,
-            diem: 0
-        };
-
-        var count = 0;
-        var apple = {
-            x: 320,
-            y: 320
-        };
-
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min)) + min;
+    class Rectangle {
+        constructor(_x, _y, _width, _height, _color) {
+            this.x = _x;
+            this.y = _y;
+            this.width = _width;
+            this.height = _height;
+            this.color = _color;
         }
 
-        // game loop
-        function loop() {
-            //hàm này giống như setTimeout, sẽ gọi lại hàm loop khi loop thực thi xong
-            requestAnimationFrame(loop);
-
-            // vòng lặp trò chơi chậm đến 15 khung hình / giây thay vì 60 - 60/15 = 4
-            if (++count < 10) {
-                return;
-            }
-            count = 0;
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            snake.x += snake.dx; // mỗi loop rắn sẽ di chuyển thêm 1dx đơn vị
-            snake.y += snake.dy;
-            // khi snake đụng tường sẽ chạy lại từ edge đối diện
-            if (snake.x < 0) {
-                snake.x = canvas.width - grid;
-            }
-            else if (snake.x >= canvas.width) {
-                snake.x = 0;
-            }
-            if (snake.y < 0) {
-                snake.y = canvas.height - grid;
-            }
-            else if (snake.y >= canvas.height) {
-                snake.y = 0;
-            }
-
-            snake.cells.unshift({ x: snake.x, y: snake.y });
-
-            if (snake.cells.length > snake.maxCells) {
-                snake.cells.pop();
-            }
-
-            context.fillStyle = 'red';
-            context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-
-            context.fillStyle = 'green';
-            snake.cells.forEach(function (cell, index) {
-                context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
-
-                // Rắn ăn táo
-
-                if (cell.x === apple.x && cell.y === apple.y) {
-
-                    snake.maxCells++;
-                    diem = diem + 10;
-                    apple.x = getRandomInt(0, 25) * grid;
-                    apple.y = getRandomInt(0, 25) * grid;
-                    //tính điểm
-
-                    document.getElementById("score").innerHTML = diem;
-
-                    // topdiem.push(diem);
-                    // document.getElementById("top").innerHTML = topdiem.sort();
-                }
-                function myFunction() {
-                    // top.push(diem);
-                    for (var i = index + 1; i < snake.cells.length; i++) {
-                        if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                            // top.push(diem);
-                            return top;
-
-                        }
-                    }
-                }
-
-                // document.getElementById("top").innerHTML = topdiem.sort();
-
-                // check va chạm khi rắn đụng đuôi
-                for (var i = index + 1; i < snake.cells.length; i++) {
-
-                    // va chạm thì reset game
-                    if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                        snake.x = 160;
-                        snake.y = 160;
-                        snake.cells = [];
-                        snake.maxCells = 4;
-                        snake.dx = grid;
-                        snake.dy = 0;
-                        apple.x = getRandomInt(0, 25) * grid;
-                        apple.y = getRandomInt(0, 25) * grid;
-                        // lưu và lấy điểm lớn nhất.
-                        if (Number(localStorage.getItem("topdiem")) < diem) {
-                            if (typeof (Storage) !== "undefined") {
-                                localStorage.setItem("topdiem", diem);
-
-                            }
-                        }
-                        alert('OVER số điểm của bạn là:' + ' ' + diem);
-                        location.reload();
-
-                    }
-
-                }
-            });
+        render = function () {
+            ctx.beginPath();
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
         }
-        document.addEventListener('keydown', function (e) {
-            if (e.which === 37 && snake.dx === 0) {
-                snake.dx = -grid;
-                snake.dy = 0;
-            }
-            else if (e.which === 38 && snake.dy === 0) {
-                snake.dy = -grid;
-                snake.dx = 0;
-            }
-            else if (e.which === 39 && snake.dx === 0) {
-                snake.dx = grid;
-                snake.dy = 0;
-            }
-            else if (e.which === 40 && snake.dy === 0) {
-                snake.dy = grid;
-                snake.dx = 0;
-            }
-        });
-        requestAnimationFrame(loop);
-        requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // requestAnimationFrame(loop);
-        // document.getElementById("demo").innerHTML = diem;
-        // document.getElementById("top").innerHTML = topdiem.push(diem);
+    }
 
-
-        document.getElementById("topdiem").innerHTML = localStorage.getItem("topdiem");
-
-    </script>
+    let rectangle = new Rectangle(10, 10, 200, 100, "red");
+    rectangle.render();
+</script>
 </body>
-
 </html>

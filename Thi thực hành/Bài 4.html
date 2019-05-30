@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viết chương trình vẽ hình chữ nhật trên canvas</title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500" style="border: 1px solid black;"></canvas>
+</body>
+<script>
+    class Rectangle {
+        constructor(x, y, width, height, color) {
+            this.positionX = x;
+            this.positionY = y;
+            this.recWidth = width;
+            this.recHeight = height;
+            this.recColor = color;
+        }
+
+        render() {
+            let context = document.getElementById("canvas");
+            let ctx = context.getContext("2d");
+            ctx.fillStyle = this.recColor;
+            ctx.fillRect(this.positionX, this.positionY, this.recWidth, this.recHeight)
+        }
+    }
+
+    let rectangle = new Rectangle(10, 10, 200, 100, "#000000");
+    rectangle.render();
+</script>
+</html>
